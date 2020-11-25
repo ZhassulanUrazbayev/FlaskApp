@@ -23,4 +23,4 @@ def index():
         return redirect(chatInviteLinks[chatInviteLinkIndex])
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="45.149.128.147",port=80)
