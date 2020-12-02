@@ -59,7 +59,7 @@ def createGruop1(chatNumber):
     creatGroup = "{\r\n\t\"groupName\": \"Қуаныш Шонбайдың %d\",\r\n    \"chatIds\": [\r\n        \"%s\"\r\n\t]\r\n}\r\n" % (
         chatNumber, whatsappId)
 
-    print(creatGroup)
+    print(creatGroup.encode('utf8'))
 
     creatGroupResponse = requests.request("POST", creatGroupUrl, headers=headers, data=creatGroup.encode('utf8'))
 
@@ -89,7 +89,7 @@ def createGruopSecond(chatNumber):
     creatGroup = "{\r\n\t\"groupName\": \"Қуаныш Шонбайдың %d\",\r\n    \"chatIds\": [\r\n        \"%s\"\r\n\t]\r\n}\r\n" % (
         chatNumber, whatsappId)
 
-    print(creatGroup)
+    print(creatGroup.encode('utf8'))
 
     creatGroupResponse = requests.request("POST", creatGroupUrl, headers=headers, data=creatGroup.encode('utf8'))
 
@@ -722,25 +722,25 @@ def changeGroupInviteLinks():
     chatIds.clear()
     print(str(chatIds) + " after clear chatIds")
 
-ChangeGroupInviteLinksTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"00"), '%Y-%m-%dT%H:%M')
+ChangeGroupInviteLinksTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"10"), '%Y-%m-%dT%H:%M')
 
 sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime)
 
-FirstGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"01"), '%Y-%m-%dT%H:%M')
-SecondGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"02"), '%Y-%m-%dT%H:%M')
-ThirdGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"03"), '%Y-%m-%dT%H:%M')
-FoursGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"04"), '%Y-%m-%dT%H:%M')
-FivesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"05"), '%Y-%m-%dT%H:%M')
-SixesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"06"), '%Y-%m-%dT%H:%M')
-SevensGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"07"), '%Y-%m-%dT%H:%M')
-EighthsGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"08"), '%Y-%m-%dT%H:%M')
-NinesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"09"), '%Y-%m-%dT%H:%M')
-TensGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"10"), '%Y-%m-%dT%H:%M')
-ElevensGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"11"), '%Y-%m-%dT%H:%M')
-TwelvesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"12"), '%Y-%m-%dT%H:%M')
-ThirdsGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"13"), '%Y-%m-%dT%H:%M')
-FourteenthGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"14"), '%Y-%m-%dT%H:%M')
-FifteensGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"15"), '%Y-%m-%dT%H:%M')
+FirstGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"11"), '%Y-%m-%dT%H:%M')
+SecondGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"12"), '%Y-%m-%dT%H:%M')
+ThirdGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"13"), '%Y-%m-%dT%H:%M')
+FoursGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"14"), '%Y-%m-%dT%H:%M')
+FivesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"15"), '%Y-%m-%dT%H:%M')
+SixesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"16"), '%Y-%m-%dT%H:%M')
+SevensGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"17"), '%Y-%m-%dT%H:%M')
+EighthsGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"18"), '%Y-%m-%dT%H:%M')
+NinesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"19"), '%Y-%m-%dT%H:%M')
+TensGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"20"), '%Y-%m-%dT%H:%M')
+ElevensGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"21"), '%Y-%m-%dT%H:%M')
+TwelvesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"22"), '%Y-%m-%dT%H:%M')
+ThirdsGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"23"), '%Y-%m-%dT%H:%M')
+FourteenthGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"24"), '%Y-%m-%dT%H:%M')
+FifteensGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"25"), '%Y-%m-%dT%H:%M')
 # sched.add_job(jobsendMessageAt1900, trigger='date', next_run_time=EighthsGroupCreationDate_time)
 
 sched.add_job(createGroup, trigger='date', next_run_time=FirstGroupCreationDate_time)
@@ -758,16 +758,16 @@ sched.add_job(createGroupSecond, trigger='date', next_run_time=TensGroupCreation
 # sched.add_job(createGroupSecond, trigger='date', next_run_time=FourteenthGroupCreationDate_time)
 # sched.add_job(createGroupSecond, trigger='date', next_run_time=FifteensGroupCreationDate_time)
 
-FirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"16"), '%Y-%m-%dT%H:%M')
-SecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"17"), '%Y-%m-%dT%H:%M')
-ThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"18"), '%Y-%m-%dT%H:%M')
-FoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"19"), '%Y-%m-%dT%H:%M')
-FivesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"20"), '%Y-%m-%dT%H:%M')
-SixesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"21"), '%Y-%m-%dT%H:%M')
-SevensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"22"), '%Y-%m-%dT%H:%M')
-EightsMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"23"), '%Y-%m-%dT%H:%M')
-NinesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"24"), '%Y-%m-%dT%H:%M')
-TensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"25"), '%Y-%m-%dT%H:%M')
+FirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"26"), '%Y-%m-%dT%H:%M')
+SecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"27"), '%Y-%m-%dT%H:%M')
+ThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"28"), '%Y-%m-%dT%H:%M')
+FoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"29"), '%Y-%m-%dT%H:%M')
+FivesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"30"), '%Y-%m-%dT%H:%M')
+SixesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"31"), '%Y-%m-%dT%H:%M')
+SevensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"32"), '%Y-%m-%dT%H:%M')
+EightsMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"33"), '%Y-%m-%dT%H:%M')
+NinesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"34"), '%Y-%m-%dT%H:%M')
+TensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"35"), '%Y-%m-%dT%H:%M')
 
 sched.add_job(jobsendMessageAt1850, trigger='date', next_run_time=FirstMessageTime)
 sched.add_job(jobsendMessageAt1851, trigger='date', next_run_time=SecondMessageTime)
@@ -784,16 +784,16 @@ ChangeGroupInviteLinksTime2 = datetime.datetime.strptime(str(year+"-"+month+"-"+
 
 sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime2)
 
-FirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"26"), '%Y-%m-%dT%H:%M')
-SecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"27"), '%Y-%m-%dT%H:%M')
-ThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"28"), '%Y-%m-%dT%H:%M')
-FoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"29"), '%Y-%m-%dT%H:%M')
-FivesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"30"), '%Y-%m-%dT%H:%M')
-SixesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"31"), '%Y-%m-%dT%H:%M')
-SevensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"32"), '%Y-%m-%dT%H:%M')
-EightsMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"33"), '%Y-%m-%dT%H:%M')
-NinesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"34"), '%Y-%m-%dT%H:%M')
-TensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"35"), '%Y-%m-%dT%H:%M')
+FirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"36"), '%Y-%m-%dT%H:%M')
+SecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"37"), '%Y-%m-%dT%H:%M')
+ThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"38"), '%Y-%m-%dT%H:%M')
+FoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"39"), '%Y-%m-%dT%H:%M')
+FivesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"40"), '%Y-%m-%dT%H:%M')
+SixesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"41"), '%Y-%m-%dT%H:%M')
+SevensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"42"), '%Y-%m-%dT%H:%M')
+EightsMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"43"), '%Y-%m-%dT%H:%M')
+NinesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"44"), '%Y-%m-%dT%H:%M')
+TensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"17"+":"+"45"), '%Y-%m-%dT%H:%M')
 
 sched.add_job(jobsendToOldMessageAt1850, trigger='date', next_run_time=FirstMessageTime)
 sched.add_job(jobsendToOldMessageAt1851, trigger='date', next_run_time=SecondMessageTime)
