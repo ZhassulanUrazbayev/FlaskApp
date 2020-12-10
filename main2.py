@@ -1552,7 +1552,7 @@ def changeGroupInviteLinks():
 #
 # sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime)
 
-JustOnes = datetime.datetime.strptime(str(year+"-"+month+"-"+"10"+"T"+"23"+":"+"50"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+JustOnes = datetime.datetime.strptime(str(year+"-"+month+"-"+"10"+"T"+"23"+":"+"20"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
 
 sched.add_job(createGruopSecond, trigger='date', next_run_time=JustOnes)
 
