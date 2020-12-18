@@ -1826,5 +1826,5 @@ def index():
 
 if __name__ == "__main__":
     sched.start()
-    app.run(debug=True, use_reloader=False)
-    # app.run(host="45.149.128.147",port=80, debug=True, use_reloader=False)
+    # app.run(debug=True, use_reloader=False)
+    app.run(host="45.149.128.147",port=80, debug=True, use_reloader=False)
