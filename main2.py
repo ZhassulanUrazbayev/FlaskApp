@@ -1657,10 +1657,10 @@ def my_job(text):
 
 sched.add_job(func=my_job, args=['job running'], trigger='interval', id='job', minutes=1)
 
-FirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"21"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-SecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"21"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-ThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"22"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-FoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"22"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+FirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"01"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+SecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"01"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+ThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"02"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+FoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"02"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 # FivesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"04"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 # SixesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"05"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 # EightsMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"06"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
