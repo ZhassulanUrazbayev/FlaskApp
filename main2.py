@@ -30,8 +30,27 @@ dataInviteLinks = ["https://chat.whatsapp.com/IUEDsa1eLRcCavmHqLs38c","https://c
 
 sched = BackgroundScheduler(timezone='Asia/Almaty', executors=executors)
 
-createdChatIds = ["77764497092-1607055302@g.us","77764497092-1607055242@g.us","77764497092-1607055182@g.us","77764497092-1607055122@g.us","77764497092-1607055063@g.us","77764497092-1607055002@g.us","77764497092-1607054942@g.us","77764497092-1607054883@g.us","77764497092-1607054824@g.us","77764497092-1607054764@g.us"]
-createdInviteLinks = ["https://chat.whatsapp.com/IUEDsa1eLRcCavmHqLs38c","https://chat.whatsapp.com/H09cgpDt9yuGhlMxtcGPJm","https://chat.whatsapp.com/LwWNwGEWi4M2Uyq1yBQknp","https://chat.whatsapp.com/KM1UTVXwNLL58fIBGHHqp4","https://chat.whatsapp.com/FYjHY4yMKCnIM8DFbOmF9S","https://chat.whatsapp.com/CwaHSZBGwFtDCTlNwb48hy","https://chat.whatsapp.com/EzPJ1OvCV6eInsXPPuI7on","https://chat.whatsapp.com/I9BhGRcAVIiBIqiNo4clcE","https://chat.whatsapp.com/LiJn43o92SK3zf97cUSHc5","https://chat.whatsapp.com/BJTh3b8gaSmJ2ECzJAzVrw"]
+createdChatIds = ["77764497092-1607055302@g.us","77764497092-1607055242@g.us"]
+createdInviteLinks = ["https://chat.whatsapp.com/IUEDsa1eLRcCavmHqLs38c","https://chat.whatsapp.com/H09cgpDt9yuGhlMxtcGPJm"]
+
+createdChatIds17 = ["77764497092-1608210014@g.us",
+                    "77764497092-1608210085@g.us",
+                    "77764497092-1608210144@g.us",
+                    "77764497092-1608210202@g.us",
+                    "77764497092-1608210262@g.us",
+                    "77764497092-1608210322@g.us",
+                    "77764497092-1608210383@g.us",
+                    "77764497092-1608210442@g.us",
+                    "77764497092-1608210503@g.us"]
+createdInviteLinks17 = ['https://chat.whatsapp.com/J8TnhYatkGVHITQY6Sl1zS',
+                        'https://chat.whatsapp.com/K22nDxQeugN8yQn2Qix2EA',
+                        'https://chat.whatsapp.com/HgEggPVP3OWFT05Joo6nwD',
+                        'https://chat.whatsapp.com/F6RVFL42A30Awg1qHAwm1N',
+                        'https://chat.whatsapp.com/Kp75Sbup5KGJA2LOuk7wNI',
+                        'https://chat.whatsapp.com/DqtA2ecPj4NAO4UmxTg9Qb',
+                        'https://chat.whatsapp.com/FsyPP2M6dKGJzFfMhctpln',
+                        'https://chat.whatsapp.com/IShLAu7wQy7GMws8gqrh6d',
+                        'https://chat.whatsapp.com/DL1IZAPkjLXLZPb4LS8HIg']
 
 newestChatIds = ["77764497092-1607055302@g.us","77764497092-1607055242@g.us","77764497092-1607055182@g.us","77764497092-1607055122@g.us","77764497092-1607055063@g.us","77764497092-1607055002@g.us","77764497092-1607054942@g.us","77764497092-1607054883@g.us","77764497092-1607054824@g.us","77764497092-1607054764@g.us"]
 newestInviteLinks = ["https://chat.whatsapp.com/IUEDsa1eLRcCavmHqLs38c","https://chat.whatsapp.com/H09cgpDt9yuGhlMxtcGPJm","https://chat.whatsapp.com/LwWNwGEWi4M2Uyq1yBQknp","https://chat.whatsapp.com/KM1UTVXwNLL58fIBGHHqp4","https://chat.whatsapp.com/FYjHY4yMKCnIM8DFbOmF9S","https://chat.whatsapp.com/CwaHSZBGwFtDCTlNwb48hy","https://chat.whatsapp.com/EzPJ1OvCV6eInsXPPuI7on","https://chat.whatsapp.com/I9BhGRcAVIiBIqiNo4clcE","https://chat.whatsapp.com/LiJn43o92SK3zf97cUSHc5","https://chat.whatsapp.com/BJTh3b8gaSmJ2ECzJAzVrw"]
@@ -1513,6 +1532,27 @@ def jobsendToOldMessageUrlAt2121():
 def jobsendToOldMessageUrlAt2122():
     sendToOldMessageUrl2122()
 
+def sendFirstMessageToFilledGroup(charIdIndex):
+    global chatIds
+
+    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"Сәлем, байланыста Қуаныш Шонбай!\\n\\nҚұттықтаймын! Сен мастер-классқа сәтті тіркелдің!🥳\n\nБүгінгі тегін мастер-класс сілтемесін осы топқа жіберемін. Мастер-класста көріскенше🙌🏻\"\r\n}" % (
+        chatIds[charIdIndex])
+
+    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                           data=sendMessageAt1850.encode('utf8'))
+
+    y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+    print(y["idMessage"])
+
+    print(sendMessageResponse.text.encode('utf8'))
+
+    print(chatIds[charIdIndex])
+
+    print(charIdIndex)
+
+    print("I'm working at sendFirstMessageToFilledGroup")
+
 def changeGroupInviteLinks():
     global chatInviteLinksToday
     global chatInviteLinksYesterday
@@ -1552,149 +1592,215 @@ def changeGroupInviteLinks():
 #
 # sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime)
 
-JustOnes = datetime.datetime.strptime(str(year+"-"+month+"-"+"14"+"T"+"19"+":"+"30"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+JustOnes = datetime.datetime.strptime(str(year+"-"+month+"-"+"18"+"T"+"19"+":"+"00"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
 
 sched.add_job(createGruopSecond, trigger='date', next_run_time=JustOnes)
 
-FirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"18"+":"+"00"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-SecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"18"+":"+"01"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-ThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"18"+":"+"02"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-FoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"18"+":"+"03"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-FivesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"18"+":"+"04"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-SixesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"18"+":"+"05"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-EightsMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"18"+":"+"06"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-SevensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"18"+":"+"07"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-NinesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"18"+":"+"08"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-TensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"18"+":"+"09"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+def sendMessageAtExample():
+    global sendMessageIndex
+    global chatIds
 
-sched.add_job(jobsendMessageAt1850, trigger='date', next_run_time=FirstMessageTime)
-sched.add_job(jobsendMessageAt1851, trigger='date', next_run_time=SecondMessageTime)
-sched.add_job(jobsendMessageAt1852, trigger='date', next_run_time=ThirdMessageTime)
-sched.add_job(jobsendMessageAt1853, trigger='date', next_run_time=FoursMessageTime)
-sched.add_job(jobsendMessageAt1854, trigger='date', next_run_time=FivesMessageTime)
-sched.add_job(jobsendMessageAt1855, trigger='date', next_run_time=SixesMessageTime)
-sched.add_job(jobsendMessageAt1856, trigger='date', next_run_time=SevensMessageTime)
-sched.add_job(jobsendMessageAt1857, trigger='date', next_run_time=EightsMessageTime)
-sched.add_job(jobsendMessageAt1858, trigger='date', next_run_time=NinesMessageTime)
-sched.add_job(jobsendMessageAt1859, trigger='date', next_run_time=TensMessageTime)
+    print(str(sendMessageIndex)+" sendMessageIndex")
+
+    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"“ИНТЕРНЕТ-МАРКЕТОЛОГ” КУРСЫН КҮНІНЕ 408 ТЕҢГЕГЕ АЛ😎🤯\\n\\nShonbay Business School ұсынған “Интернет-маркетолог” курсына қатысу енді бұрынғыдан да қол жетімді. Өйткені сенде 31 желтоқсанға дейін курсты еш пайызсыз 12 айға бөліп төлеу мүмкіндігі бар😍\n\nДемек, “Интернет-маркетолог” курсын қазір алу арқылы сен күнделікті білім алуға бар болғаны 408 теңге жұмсайсың🙌🏻\n\nКурс барысында 3 ай көлемінде сен толық циклді интернет-маркетолог атанып, айына кем дегенде 200.000 теңге табыс табу мүмкіндігіне ие боласың. Оған қоса, сені үнемі қадағалауда ұстатайтын куратор, дамушы орта мен практик спикерлер күтеді😍\n\nБөліп төлеу туралы толық ақпарат алу үшін дәл қазір мына сілтеме бойынша өт: 👇🏻\"\r\n}" % (
+        chatIds[sendMessageIndex])
+
+    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                           data=sendMessageAt1850.encode('utf8'))
+
+    y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+    print(y["idMessage"])
+
+    print(sendMessageResponse.text.encode('utf8'))
+
+    print(chatIds[sendMessageIndex])
+
+    print(sendMessageIndex)
+
+    print("I'm working at 18-50")
+
+def sendMessageAtExampleUrl():
+    global sendMessageIndex
+    global chatIds
+
+    print(str(sendMessageIndex)+" sendMessageIndex")
+
+    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"https://shonbay.school/bt\"\r\n}" % (
+        chatIds[sendMessageIndex])
+
+    sendMessageIndex +=1
+
+    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                           data=sendMessageAt1850.encode('utf8'))
+
+    y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+    print(y["idMessage"])
+
+    print(sendMessageResponse.text.encode('utf8'))
+
+    # print(chatIds[sendMessageIndex])
+
+    print(sendMessageIndex)
+
+    print("I'm working at 18-50")
+
+def ExampleMessageJob():
+    sendMessageAtExample()
+
+def ExampleMessageUrlJob():
+    sendMessageAtExampleUrl()
+
+def my_job(text):
+    print(text, str(datetime.datetime.now()))
+
+sched.add_job(func=my_job, args=['job running'], trigger='interval', id='job', minutes=1)
+
+FirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"21"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+SecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"21"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+ThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"22"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+FoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"22"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# FivesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"04"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# SixesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"05"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# EightsMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"06"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# SevensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"07"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# NinesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"08"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# TensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"09"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+
+sched.add_job(ExampleMessageJob, trigger='cron', next_run_time=FirstMessageTime)
+sched.add_job(ExampleMessageUrlJob, trigger='cron', next_run_time=SecondMessageTime)
+sched.add_job(ExampleMessageJob, trigger='cron', next_run_time=ThirdMessageTime)
+sched.add_job(ExampleMessageUrlJob, trigger='cron', next_run_time=FoursMessageTime)
+
+# sched.add_job(jobsendMessageAt1850, trigger='date', next_run_time=FirstMessageTime)
+# sched.add_job(jobsendMessageAt1851, trigger='date', next_run_time=SecondMessageTime)
+# sched.add_job(jobsendMessageAt1852, trigger='date', next_run_time=ThirdMessageTime)
+# sched.add_job(jobsendMessageAt1853, trigger='date', next_run_time=FoursMessageTime)
+# sched.add_job(jobsendMessageAt1854, trigger='date', next_run_time=FivesMessageTime)
+# sched.add_job(jobsendMessageAt1855, trigger='date', next_run_time=SixesMessageTime)
+# sched.add_job(jobsendMessageAt1856, trigger='date', next_run_time=SevensMessageTime)
+# sched.add_job(jobsendMessageAt1857, trigger='date', next_run_time=EightsMessageTime)
+# sched.add_job(jobsendMessageAt1858, trigger='date', next_run_time=NinesMessageTime)
+# sched.add_job(jobsendMessageAt1859, trigger='date', next_run_time=TensMessageTime)
 #
-ChangeGroupInviteLinksTime2 = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"00"+":"+"00"), '%Y-%m-%dT%H:%M:%S')
+# ChangeGroupInviteLinksTime2 = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"00"+":"+"00"), '%Y-%m-%dT%H:%M:%S')
+# #
+# sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime2)
 #
-sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime2)
-
-FirstGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"00"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-SecondGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"01"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-ThirdGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"02"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-FoursGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"03"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-FivesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"04"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-SixesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"05"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-SevensGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"06"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-EighthsGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"07"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-NinesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"08"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-TensGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"09"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# FirstGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"00"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+# SecondGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"01"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# ThirdGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"02"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# FoursGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"03"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# FivesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"04"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# SixesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"05"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# SevensGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"06"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# EighthsGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"07"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# NinesGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"08"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# TensGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"09"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# #
+# sched.add_job(createGroup, trigger='date', next_run_time=FirstGroupCreationDate_time)
+# sched.add_job(createGroup, trigger='date', next_run_time=SecondGroupCreationDate_time)
+# sched.add_job(createGroup, trigger='date', next_run_time=ThirdGroupCreationDate_time)
+# sched.add_job(createGroup, trigger='date', next_run_time=FoursGroupCreationDate_time)
+# sched.add_job(createGroup, trigger='date', next_run_time=FivesGroupCreationDate_time)
+# sched.add_job(createGroup, trigger='date', next_run_time=SixesGroupCreationDate_time)
+# sched.add_job(createGroup, trigger='date', next_run_time=SevensGroupCreationDate_time)
+# sched.add_job(createGroup, trigger='date', next_run_time=EighthsGroupCreationDate_time)
+# sched.add_job(createGroup, trigger='date', next_run_time=NinesGroupCreationDate_time)
+# sched.add_job(createGroup, trigger='date', next_run_time=TensGroupCreationDate_time)
+# # sched.add_job(createGroupSecond, trigger='date', next_run_time=ElevensGroupCreationDate_time)
+# # sched.add_job(createGroupSecond, trigger='date', next_run_time=ThirdGroupCreationDate_time)
+# # sched.add_job(createGroupSecond, trigger='date', next_run_time=FourteenthGroupCreationDate_time)
+# # sched.add_job(createGroupSecond, trigger='date', next_run_time=FifteensGroupCreationDate_time)
 #
-sched.add_job(createGroup, trigger='date', next_run_time=FirstGroupCreationDate_time)
-sched.add_job(createGroup, trigger='date', next_run_time=SecondGroupCreationDate_time)
-sched.add_job(createGroup, trigger='date', next_run_time=ThirdGroupCreationDate_time)
-sched.add_job(createGroup, trigger='date', next_run_time=FoursGroupCreationDate_time)
-sched.add_job(createGroup, trigger='date', next_run_time=FivesGroupCreationDate_time)
-sched.add_job(createGroup, trigger='date', next_run_time=SixesGroupCreationDate_time)
-sched.add_job(createGroup, trigger='date', next_run_time=SevensGroupCreationDate_time)
-sched.add_job(createGroup, trigger='date', next_run_time=EighthsGroupCreationDate_time)
-sched.add_job(createGroup, trigger='date', next_run_time=NinesGroupCreationDate_time)
-sched.add_job(createGroup, trigger='date', next_run_time=TensGroupCreationDate_time)
-# sched.add_job(createGroupSecond, trigger='date', next_run_time=ElevensGroupCreationDate_time)
-# sched.add_job(createGroupSecond, trigger='date', next_run_time=ThirdGroupCreationDate_time)
-# sched.add_job(createGroupSecond, trigger='date', next_run_time=FourteenthGroupCreationDate_time)
-# sched.add_job(createGroupSecond, trigger='date', next_run_time=FifteensGroupCreationDate_time)
-
-sFirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"10"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-sSecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"11"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-sThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"12"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-sFoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"13"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-sFivesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"14"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-sSixesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"15"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-sSevensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"16"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-sEightsMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"17"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-sNinesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"18"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-sTensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"19"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-
-sched.add_job(jobsendMessageAt1910, trigger='date', next_run_time=sFirstMessageTime)
-sched.add_job(jobsendMessageAt1911, trigger='date', next_run_time=sSecondMessageTime)
-sched.add_job(jobsendMessageAt1912, trigger='date', next_run_time=sThirdMessageTime)
-sched.add_job(jobsendMessageAt1913, trigger='date', next_run_time=sFoursMessageTime)
-sched.add_job(jobsendMessageAt1914, trigger='date', next_run_time=sFivesMessageTime)
-sched.add_job(jobsendMessageAt1915, trigger='date', next_run_time=sSixesMessageTime)
-sched.add_job(jobsendMessageAt1916, trigger='date', next_run_time=sSevensMessageTime)
-sched.add_job(jobsendMessageAt1917, trigger='date', next_run_time=sEightsMessageTime)
-sched.add_job(jobsendMessageAt1918, trigger='date', next_run_time=sNinesMessageTime)
-sched.add_job(jobsendMessageAt1919, trigger='date', next_run_time=sTensMessageTime)
-
-tFirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"30"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-tSecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"31"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-tThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"32"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-tFoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"33"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-tFivesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"34"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-tSixesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"35"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-tSevensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"36"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-tEightsMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"37"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-tNinesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"38"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-tTensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"39"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-
-sched.add_job(jobsendMessageAt1930, trigger='date', next_run_time=tFirstMessageTime)
-sched.add_job(jobsendMessageAt1931, trigger='date', next_run_time=tSecondMessageTime)
-sched.add_job(jobsendMessageAt1932, trigger='date', next_run_time=tThirdMessageTime)
-sched.add_job(jobsendMessageAt1933, trigger='date', next_run_time=tFoursMessageTime)
-sched.add_job(jobsendMessageAt1934, trigger='date', next_run_time=tFivesMessageTime)
-sched.add_job(jobsendMessageAt1935, trigger='date', next_run_time=tSixesMessageTime)
-sched.add_job(jobsendMessageAt1936, trigger='date', next_run_time=tSevensMessageTime)
-sched.add_job(jobsendMessageAt1937, trigger='date', next_run_time=tEightsMessageTime)
-sched.add_job(jobsendMessageAt1938, trigger='date', next_run_time=tNinesMessageTime)
-sched.add_job(jobsendMessageAt1939, trigger='date', next_run_time=tTensMessageTime)
+# sFirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"10"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# sSecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"11"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# sThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"12"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# sFoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"13"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# sFivesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"14"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# sSixesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"15"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# sSevensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"16"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# sEightsMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"17"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# sNinesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"18"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# sTensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"19"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 #
-FirstMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"13"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-SecondMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"14"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-ThirdMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"15"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-FivesMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"16"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-FoursMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"17"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-SixesMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"18"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-SevensMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"19"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-EightsMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"20"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-NinesMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"21"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-TensMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"22"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-
-sched.add_job(jobsendToOldMessageAt2113, trigger='date', next_run_time=FirstMessageTimeOld)
-sched.add_job(jobsendToOldMessageAt2114, trigger='date', next_run_time=SecondMessageTimeOld)
-sched.add_job(jobsendToOldMessageAt2115, trigger='date', next_run_time=ThirdMessageTimeOld)
-sched.add_job(jobsendToOldMessageAt2116, trigger='date', next_run_time=FoursMessageTimeOld)
-sched.add_job(jobsendToOldMessageAt2117, trigger='date', next_run_time=FivesMessageTimeOld)
-sched.add_job(jobsendToOldMessageAt2118, trigger='date', next_run_time=SixesMessageTimeOld)
-sched.add_job(jobsendToOldMessageAt2119, trigger='date', next_run_time=SevensMessageTimeOld)
-sched.add_job(jobsendToOldMessageAt2120, trigger='date', next_run_time=EightsMessageTimeOld)
-sched.add_job(jobsendToOldMessageAt2121, trigger='date', next_run_time=NinesMessageTimeOld)
-sched.add_job(jobsendToOldMessageAt2122, trigger='date', next_run_time=TensMessageTimeOld)
+# sched.add_job(jobsendMessageAt1910, trigger='date', next_run_time=sFirstMessageTime)
+# sched.add_job(jobsendMessageAt1911, trigger='date', next_run_time=sSecondMessageTime)
+# sched.add_job(jobsendMessageAt1912, trigger='date', next_run_time=sThirdMessageTime)
+# sched.add_job(jobsendMessageAt1913, trigger='date', next_run_time=sFoursMessageTime)
+# sched.add_job(jobsendMessageAt1914, trigger='date', next_run_time=sFivesMessageTime)
+# sched.add_job(jobsendMessageAt1915, trigger='date', next_run_time=sSixesMessageTime)
+# sched.add_job(jobsendMessageAt1916, trigger='date', next_run_time=sSevensMessageTime)
+# sched.add_job(jobsendMessageAt1917, trigger='date', next_run_time=sEightsMessageTime)
+# sched.add_job(jobsendMessageAt1918, trigger='date', next_run_time=sNinesMessageTime)
+# sched.add_job(jobsendMessageAt1919, trigger='date', next_run_time=sTensMessageTime)
 #
-FirstMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"13"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
-SecondMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"14"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
-ThirdMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"15"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
-FoursMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"16"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
-FivesMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"17"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
-SixesMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"18"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
-SevensMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"19"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
-EightsMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"20"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
-NinesMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"21"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
-TensMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"22"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
-
-sched.add_job(jobsendToOldMessageUrlAt2113, trigger='date', next_run_time=FirstMessageTimeUrl)
-sched.add_job(jobsendToOldMessageUrlAt2114, trigger='date', next_run_time=SecondMessageTimeUrl)
-sched.add_job(jobsendToOldMessageUrlAt2115, trigger='date', next_run_time=ThirdMessageTimeUrl)
-sched.add_job(jobsendToOldMessageUrlAt2116, trigger='date', next_run_time=FoursMessageTimeUrl)
-sched.add_job(jobsendToOldMessageUrlAt2117, trigger='date', next_run_time=FivesMessageTimeUrl)
-sched.add_job(jobsendToOldMessageUrlAt2118, trigger='date', next_run_time=SixesMessageTimeUrl)
-sched.add_job(jobsendToOldMessageUrlAt2119, trigger='date', next_run_time=SevensMessageTimeUrl)
-sched.add_job(jobsendToOldMessageUrlAt2120, trigger='date', next_run_time=EightsMessageTimeUrl)
-sched.add_job(jobsendToOldMessageUrlAt2121, trigger='date', next_run_time=NinesMessageTimeUrl)
-sched.add_job(jobsendToOldMessageUrlAt2122, trigger='date', next_run_time=TensMessageTimeUrl)
+# tFirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"30"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# tSecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"31"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# tThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"32"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# tFoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"33"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# tFivesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"34"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# tSixesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"35"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# tSevensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"36"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# tEightsMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"37"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# tNinesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"38"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# tTensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"39"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+#
+# sched.add_job(jobsendMessageAt1930, trigger='date', next_run_time=tFirstMessageTime)
+# sched.add_job(jobsendMessageAt1931, trigger='date', next_run_time=tSecondMessageTime)
+# sched.add_job(jobsendMessageAt1932, trigger='date', next_run_time=tThirdMessageTime)
+# sched.add_job(jobsendMessageAt1933, trigger='date', next_run_time=tFoursMessageTime)
+# sched.add_job(jobsendMessageAt1934, trigger='date', next_run_time=tFivesMessageTime)
+# sched.add_job(jobsendMessageAt1935, trigger='date', next_run_time=tSixesMessageTime)
+# sched.add_job(jobsendMessageAt1936, trigger='date', next_run_time=tSevensMessageTime)
+# sched.add_job(jobsendMessageAt1937, trigger='date', next_run_time=tEightsMessageTime)
+# sched.add_job(jobsendMessageAt1938, trigger='date', next_run_time=tNinesMessageTime)
+# sched.add_job(jobsendMessageAt1939, trigger='date', next_run_time=tTensMessageTime)
+# #
+# FirstMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"13"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+# SecondMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"14"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+# ThirdMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"15"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+# FivesMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"16"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+# FoursMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"17"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+# SixesMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"18"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+# SevensMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"19"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+# EightsMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"20"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+# NinesMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"21"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+# TensMessageTimeOld = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"22"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+#
+# sched.add_job(jobsendToOldMessageAt2113, trigger='date', next_run_time=FirstMessageTimeOld)
+# sched.add_job(jobsendToOldMessageAt2114, trigger='date', next_run_time=SecondMessageTimeOld)
+# sched.add_job(jobsendToOldMessageAt2115, trigger='date', next_run_time=ThirdMessageTimeOld)
+# sched.add_job(jobsendToOldMessageAt2116, trigger='date', next_run_time=FoursMessageTimeOld)
+# sched.add_job(jobsendToOldMessageAt2117, trigger='date', next_run_time=FivesMessageTimeOld)
+# sched.add_job(jobsendToOldMessageAt2118, trigger='date', next_run_time=SixesMessageTimeOld)
+# sched.add_job(jobsendToOldMessageAt2119, trigger='date', next_run_time=SevensMessageTimeOld)
+# sched.add_job(jobsendToOldMessageAt2120, trigger='date', next_run_time=EightsMessageTimeOld)
+# sched.add_job(jobsendToOldMessageAt2121, trigger='date', next_run_time=NinesMessageTimeOld)
+# sched.add_job(jobsendToOldMessageAt2122, trigger='date', next_run_time=TensMessageTimeOld)
+# #
+# FirstMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"13"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
+# SecondMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"14"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
+# ThirdMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"15"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
+# FoursMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"16"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
+# FivesMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"17"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
+# SixesMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"18"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
+# SevensMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"19"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
+# EightsMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"20"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
+# NinesMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"21"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
+# TensMessageTimeUrl = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"21"+":"+"22"+":"+"40"), '%Y-%m-%dT%H:%M:%S')
+#
+# sched.add_job(jobsendToOldMessageUrlAt2113, trigger='date', next_run_time=FirstMessageTimeUrl)
+# sched.add_job(jobsendToOldMessageUrlAt2114, trigger='date', next_run_time=SecondMessageTimeUrl)
+# sched.add_job(jobsendToOldMessageUrlAt2115, trigger='date', next_run_time=ThirdMessageTimeUrl)
+# sched.add_job(jobsendToOldMessageUrlAt2116, trigger='date', next_run_time=FoursMessageTimeUrl)
+# sched.add_job(jobsendToOldMessageUrlAt2117, trigger='date', next_run_time=FivesMessageTimeUrl)
+# sched.add_job(jobsendToOldMessageUrlAt2118, trigger='date', next_run_time=SixesMessageTimeUrl)
+# sched.add_job(jobsendToOldMessageUrlAt2119, trigger='date', next_run_time=SevensMessageTimeUrl)
+# sched.add_job(jobsendToOldMessageUrlAt2120, trigger='date', next_run_time=EightsMessageTimeUrl)
+# sched.add_job(jobsendToOldMessageUrlAt2121, trigger='date', next_run_time=NinesMessageTimeUrl)
+# sched.add_job(jobsendToOldMessageUrlAt2122, trigger='date', next_run_time=TensMessageTimeUrl)
 
 @app.route('/')
 def index():
@@ -1709,8 +1815,10 @@ def index():
             if inviteLinksIndex == len(chatInviteLinksToday) - 1:
                 number = 0
                 inviteLinksIndex = inviteLinksIndex
+                sendFirstMessageToFilledGroup(inviteLinksIndex)
             else:
                 number = 0
+                sendFirstMessageToFilledGroup(inviteLinksIndex)
                 inviteLinksIndex += 1
             return redirect(chatInviteLinksToday[inviteLinksIndex])
     else:
@@ -1718,5 +1826,5 @@ def index():
 
 if __name__ == "__main__":
     sched.start()
-    # app.run(debug=True, use_reloader=False)
-    app.run(host="45.149.128.147",port=80, debug=True, use_reloader=False)
+    app.run(debug=True, use_reloader=False)
+    # app.run(host="45.149.128.147",port=80, debug=True, use_reloader=False)
