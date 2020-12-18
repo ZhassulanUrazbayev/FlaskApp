@@ -1592,7 +1592,7 @@ def changeGroupInviteLinks():
 #
 # sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime)
 
-JustOnes = datetime.datetime.strptime(str(year+"-"+month+"-"+"18"+"T"+"19"+":"+"00"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+JustOnes = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"10"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
 
 sched.add_job(createGruopSecond, trigger='date', next_run_time=JustOnes)
 
@@ -1614,7 +1614,7 @@ def sendMessageAtExample():
 
     print(sendMessageResponse.text.encode('utf8'))
 
-    print(chatIds[sendMessageIndex])
+    # print(chatIds[sendMessageIndex])
 
     print(sendMessageIndex)
 
@@ -1657,10 +1657,10 @@ def my_job(text):
 
 sched.add_job(func=my_job, args=['job running'], trigger='interval', id='job', minutes=1)
 
-FirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"01"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-SecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"01"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-ThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"02"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-FoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"02"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+FirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"11"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+SecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"11"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+ThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"12"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+FoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"12"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 # FivesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"04"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 # SixesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"05"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 # EightsMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"06"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
