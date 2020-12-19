@@ -7,6 +7,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
 import requests
 import datetime
+from datetime import date
 from openpyxl import load_workbook
 from openpyxl import Workbook
 import json
@@ -131,6 +132,7 @@ def createGruopSecond():
     global chatInviteLinksToday
     global createdChatIds
     global createdInviteLinks
+    print("I'm working createGruopSecond")
     for i in createdChatIds:
         chatIds.append(i)
     for j in createdInviteLinks:
@@ -1534,9 +1536,12 @@ def jobsendToOldMessageUrlAt2122():
 
 def sendFirstMessageToFilledGroup(charIdIndex):
     global chatIds
+    global sendMessageIndex
 
-    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"Сәлем, байланыста Қуаныш Шонбай!\\n\\nҚұттықтаймын! Сен мастер-классқа сәтті тіркелдің!🥳\n\nБүгінгі тегін мастер-класс сілтемесін осы топқа жіберемін. Мастер-класста көріскенше🙌🏻\"\r\n}" % (
-        chatIds[charIdIndex])
+    print(str(sendMessageIndex)+" sendMessageIndex")
+    print(str(chatIds[sendMessageIndex]) + "chatIds sendMessageIndex")
+
+    sendMessageAt1850 = "{{\r\n\t\"chatId\": \"{}\",\r\n\t\"message\": \"Сәлем, байланыста Қуаныш Шонбай!\\n\\nҚұттықтаймын! Сен мастер-классқа сәтті тіркелдің!🥳\\n\\nБүгінгі тегін мастер-класс сілтемесін осы топқа жіберемін. Мастер-класста көріскенше🙌🏻\"\r\n}}".format(chatIds[sendMessageIndex])
 
     sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                            data=sendMessageAt1850.encode('utf8'))
@@ -1592,18 +1597,16 @@ def changeGroupInviteLinks():
 #
 # sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime)
 
-JustOnes = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"10"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-
-sched.add_job(createGruopSecond, trigger='date', next_run_time=JustOnes)
+# sched.add_job(createGruopSecond, trigger='date', next_run_time=JustOnes)
+sched.add_job(createGruopSecond, 'date', run_date='2020-12-19 22:10:00')
 
 def sendMessageAtExample():
     global sendMessageIndex
     global chatIds
 
-    print(str(sendMessageIndex)+" sendMessageIndex")
-
-    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"“ИНТЕРНЕТ-МАРКЕТОЛОГ” КУРСЫН КҮНІНЕ 408 ТЕҢГЕГЕ АЛ😎🤯\\n\\nShonbay Business School ұсынған “Интернет-маркетолог” курсына қатысу енді бұрынғыдан да қол жетімді. Өйткені сенде 31 желтоқсанға дейін курсты еш пайызсыз 12 айға бөліп төлеу мүмкіндігі бар😍\n\nДемек, “Интернет-маркетолог” курсын қазір алу арқылы сен күнделікті білім алуға бар болғаны 408 теңге жұмсайсың🙌🏻\n\nКурс барысында 3 ай көлемінде сен толық циклді интернет-маркетолог атанып, айына кем дегенде 200.000 теңге табыс табу мүмкіндігіне ие боласың. Оған қоса, сені үнемі қадағалауда ұстатайтын куратор, дамушы орта мен практик спикерлер күтеді😍\n\nБөліп төлеу туралы толық ақпарат алу үшін дәл қазір мына сілтеме бойынша өт: 👇🏻\"\r\n}" % (
-        chatIds[sendMessageIndex])
+    print(str(sendMessageIndex) + " sendMessageIndex")
+    print(str(chatIds[sendMessageIndex]) + "chatIds sendMessageIndex")
+    sendMessageAt1850 = "{{\r\n\t\"chatId\": \"{}\",\r\n\t\"message\": \"“ИНТЕРНЕТ-МАРКЕТОЛОГ” КУРСЫН КҮНІНЕ 408 ТЕҢГЕГЕ АЛ😎🤯\\n\\nShonbay Business School ұсынған “Интернет-маркетолог” курсына қатысу енді бұрынғыдан да қол жетімді. Өйткені сенде 31 желтоқсанға дейін курсты еш пайызсыз 12 айға бөліп төлеу мүмкіндігі бар😍\\n\\nДемек, “Интернет-маркетолог” курсын қазір алу арқылы сен күнделікті білім алуға бар болғаны 408 теңге жұмсайсың🙌🏻\\n\\nКурс барысында 3 ай көлемінде сен толық циклді интернет-маркетолог атанып, айына кем дегенде 200.000 теңге табыс табу мүмкіндігіне ие боласың. Оған қоса, сені үнемі қадағалауда ұстатайтын куратор, дамушы орта мен практик спикерлер күтеді😍\\n\\nБөліп төлеу туралы толық ақпарат алу үшін дәл қазір мына сілтеме бойынша өт: 👇🏻\"\r\n}}".format(chatIds[sendMessageIndex])
 
     sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                            data=sendMessageAt1850.encode('utf8'))
@@ -1624,10 +1627,10 @@ def sendMessageAtExampleUrl():
     global sendMessageIndex
     global chatIds
 
-    print(str(sendMessageIndex)+" sendMessageIndex")
+    print(str(sendMessageIndex) + " sendMessageIndex")
+    print(str(chatIds[sendMessageIndex]) + "chatIds sendMessageIndex")
 
-    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"https://shonbay.school/bt\"\r\n}" % (
-        chatIds[sendMessageIndex])
+    sendMessageAt1850 = "{{\r\n\t\"chatId\": \"{}\",\r\n\t\"message\": \"https://shonbay.school/bt\"\r\n}}".format(chatIds[sendMessageIndex])
 
     sendMessageIndex +=1
 
@@ -1657,10 +1660,14 @@ def my_job(text):
 
 sched.add_job(func=my_job, args=['job running'], trigger='interval', id='job', minutes=1)
 
-FirstMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"11"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-SecondMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"11"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
-ThirdMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"12"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
-FoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"12"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
+# FirstMessageTime =
+    # datetime.datetime.strptime(str("15"+":"+"21"+":"+"10"), '%H:%M:%S')
+# SecondMessageTime =
+    # datetime.datetime.strptime(str("15"+":"+"21"+":"+"20"), '%H:%M:%S')
+# ThirdMessageTime =
+    # datetime.datetime.strptime(str("15"+":"+"22"+":"+"10"), '%H:%M:%S')
+# FoursMessageTime =
+    # datetime.datetime.strptime(str("15"+":"+"22"+":"+"20"), '%H:%M:%S')
 # FivesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"04"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 # SixesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"05"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 # EightsMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"06"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
@@ -1668,10 +1675,10 @@ FoursMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19
 # NinesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"08"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 # TensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"09"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 
-sched.add_job(ExampleMessageJob, trigger='cron', next_run_time=FirstMessageTime)
-sched.add_job(ExampleMessageUrlJob, trigger='cron', next_run_time=SecondMessageTime)
-sched.add_job(ExampleMessageJob, trigger='cron', next_run_time=ThirdMessageTime)
-sched.add_job(ExampleMessageUrlJob, trigger='cron', next_run_time=FoursMessageTime)
+sched.add_job(ExampleMessageJob, trigger='cron', hour=22, minute=10, second=10)
+sched.add_job(ExampleMessageUrlJob, trigger='cron', hour=22, minute=10, second=20)
+sched.add_job(ExampleMessageJob, trigger='cron', hour=22, minute=11, second=10)
+sched.add_job(ExampleMessageUrlJob, trigger='cron', hour=22, minute=11, second=20)
 
 # sched.add_job(jobsendMessageAt1850, trigger='date', next_run_time=FirstMessageTime)
 # sched.add_job(jobsendMessageAt1851, trigger='date', next_run_time=SecondMessageTime)
@@ -1826,5 +1833,5 @@ def index():
 
 if __name__ == "__main__":
     sched.start()
-    # app.run(debug=True, use_reloader=False)
-    app.run(host="45.149.128.147",port=80, debug=True, use_reloader=False)
+    app.run(debug=True, use_reloader=False)
+    # app.run(host="45.149.128.147",port=80, debug=True, use_reloader=False)
