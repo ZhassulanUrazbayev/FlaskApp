@@ -42,7 +42,9 @@ createdChatIds17 = ["77764497092-1608210014@g.us",
                     "77764497092-1608210322@g.us",
                     "77764497092-1608210383@g.us",
                     "77764497092-1608210442@g.us",
-                    "77764497092-1608210503@g.us"]
+                    "77764497092-1608210503@g.us",
+                    "77764497092-1608455536@g.us",
+                    "77764497092-1608455636@g.us"]
 createdInviteLinks17 = ['https://chat.whatsapp.com/J8TnhYatkGVHITQY6Sl1zS',
                         'https://chat.whatsapp.com/K22nDxQeugN8yQn2Qix2EA',
                         'https://chat.whatsapp.com/HgEggPVP3OWFT05Joo6nwD',
@@ -51,7 +53,9 @@ createdInviteLinks17 = ['https://chat.whatsapp.com/J8TnhYatkGVHITQY6Sl1zS',
                         'https://chat.whatsapp.com/DqtA2ecPj4NAO4UmxTg9Qb',
                         'https://chat.whatsapp.com/FsyPP2M6dKGJzFfMhctpln',
                         'https://chat.whatsapp.com/IShLAu7wQy7GMws8gqrh6d',
-                        'https://chat.whatsapp.com/DL1IZAPkjLXLZPb4LS8HIg']
+                        'https://chat.whatsapp.com/DL1IZAPkjLXLZPb4LS8HIg',
+                        "https://chat.whatsapp.com/KElpZEnpe1kDkCWB5swUAz",
+                        "https://chat.whatsapp.com/F6DO1FzRf5Y5LFWhrDfmws"]
 
 newestChatIds = ["77764497092-1607055302@g.us","77764497092-1607055242@g.us","77764497092-1607055182@g.us","77764497092-1607055122@g.us","77764497092-1607055063@g.us","77764497092-1607055002@g.us","77764497092-1607054942@g.us","77764497092-1607054883@g.us","77764497092-1607054824@g.us","77764497092-1607054764@g.us"]
 newestInviteLinks = ["https://chat.whatsapp.com/IUEDsa1eLRcCavmHqLs38c","https://chat.whatsapp.com/H09cgpDt9yuGhlMxtcGPJm","https://chat.whatsapp.com/LwWNwGEWi4M2Uyq1yBQknp","https://chat.whatsapp.com/KM1UTVXwNLL58fIBGHHqp4","https://chat.whatsapp.com/FYjHY4yMKCnIM8DFbOmF9S","https://chat.whatsapp.com/CwaHSZBGwFtDCTlNwb48hy","https://chat.whatsapp.com/EzPJ1OvCV6eInsXPPuI7on","https://chat.whatsapp.com/I9BhGRcAVIiBIqiNo4clcE","https://chat.whatsapp.com/LiJn43o92SK3zf97cUSHc5","https://chat.whatsapp.com/BJTh3b8gaSmJ2ECzJAzVrw"]
@@ -89,6 +93,7 @@ chatInviteLinksToday = []
 chatInviteLinksYesterday = []
 inviteLinksIndex = 0
 sendMessageIndex = 0
+filledArrayIndex = len(createdChatIds17) - 1
 
 # date_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"14"+":"+"40"), '%Y-%m-%dT%H:%M')
 
@@ -125,6 +130,42 @@ def createGruop1(chatNumber):
     else:
         print("Suka bliat zhasamait minau CreateGroup")
 
+def createTimelyGroup():
+    creatGroup = "{\r\n\t\"groupName\": \"ТЕГІН мастер-класс\",\r\n    \"chatIds\": [\r\n        \"%s\"\r\n\t]\r\n}\r\n" % (
+        whatsappId)
+
+    print(creatGroup.encode('utf8'))
+
+    creatGroupResponse = requests.request("POST", creatGroupUrl, headers=headers, data=creatGroup.encode('utf8'))
+
+    y = json.loads(creatGroupResponse.text.encode('utf8'))
+
+    print(creatGroupResponse.text.encode('utf8'))
+
+    if y['created']:
+        global filledArrayIndex
+        filledArrayIndex += 1
+        print(y['chatId'])
+        global chatIds
+        print(str(y['chatId']) + " chatId")
+        chatIds.append(y['chatId'])
+        print(str(y['groupInviteLink']) + " groupInviteLink")
+        global chatInviteLinksToday
+        chatInviteLinksToday.append(y['groupInviteLink'])
+        print(chatInviteLinksToday)
+        print(creatGroupResponse.text.encode('utf8'))
+        global dataChatIds
+        global dataInviteLinks
+        dataChatIds.append(y['chatId'])
+        dataInviteLinks.append(y['groupInviteLink'])
+        createdChatIds17.append(y['chatId'])
+        createdInviteLinks17.append(y['groupInviteLink'])
+        # global chatId
+        global countCharNumber
+        # chatId = y['chatId']
+    else:
+        print("Suka bliat zhasamait minau CreateGroup")
+
 
 def createGruopSecond():
     global whatsappId
@@ -149,22 +190,37 @@ def sendMessageAt1850():
     sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ЖАЛПЫ ҚҰНЫ 1.000.000 тг ТҰРАТЫН САБАҚТЫ ТЕГІН АЛ 😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы бүгін 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇 https://u.to/jqPgGQ?utm_source=wh&utm_medium=first&utm_campaign=invite\"\r\n}" % (
         chatIds[sendMessageIndex])
 
-    sendMessageIndex +=1
+    if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageIndex = 20000
 
-    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
-                                           data=sendMessageAt1850.encode('utf8'))
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
 
-    y = json.loads(sendMessageResponse.text.encode('utf8'))
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
 
-    print(y["idMessage"])
+        print(y["idMessage"])
 
-    print(sendMessageResponse.text.encode('utf8'))
+        print(sendMessageResponse.text.encode('utf8'))
 
-    print(chatIds[sendMessageIndex])
+        print(sendMessageIndex)
 
-    print(sendMessageIndex)
+        print("I'm working at 18-50")
 
-    print("I'm working at 18-50")
+    elif(sendMessageIndex != 20000):
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
+
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+        print(y["idMessage"])
+
+        print(sendMessageResponse.text.encode('utf8'))
+
+        print(sendMessageIndex)
+
+        print("I'm working at 18-50")
+
+        sendMessageIndex += 1
 
 def sendMessageAt1851():
     global sendMessageIndex
@@ -173,22 +229,37 @@ def sendMessageAt1851():
     sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТ КИНО КӨРГЕНШЕ, ҚУАНЫШ ШОНБАЙДАН ТЕГІН БІЛІМ АЛ😍\\n\\nСен бүгін Алматы уақыты бойынша 19.00-21.00 аралығында не істейсің?Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸❤\\n\\nАл қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥 https://u.to/jqPgGQ?utm_source=wh&utm_medium=second&utm_campaign=invite\"\r\n}" % (
         createdChatIds[sendMessageIndex])
 
-    sendMessageIndex += 1
+    if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageIndex = 20000
 
-    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
-                                           data=sendMessageAt1850.encode('utf8'))
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
 
-    y = json.loads(sendMessageResponse.text.encode('utf8'))
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
 
-    print(y["idMessage"])
+        print(y["idMessage"])
 
-    print(sendMessageResponse.text.encode('utf8'))
+        print(sendMessageResponse.text.encode('utf8'))
 
-    print(chatIds[sendMessageIndex])
+        print(sendMessageIndex)
 
-    print(sendMessageIndex)
+        print("I'm working at 18-50")
 
-    print("I'm working at 18-50")
+    elif(sendMessageIndex != 20000):
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
+
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+        print(y["idMessage"])
+
+        print(sendMessageResponse.text.encode('utf8'))
+
+        print(sendMessageIndex)
+
+        print("I'm working at 18-50")
+
+        sendMessageIndex += 1
 
 def sendMessageAt1852():
     global sendMessageIndex
@@ -197,22 +268,37 @@ def sendMessageAt1852():
     sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ОСЫ ГРУППДАҒЫ БАРЛЫҚ АДАМДЫ ӨЗ ҮЙІМЕ ҚОНАҚҚА ШАҚЫРАМЫН😍🔥\\n\\nЕлдің бәрі тегін сабаққа кіріп, құнды білім алып жатыр. Ал сен әлі не істеріңді білмей отырсың 😑👎🏻\\n\\nЕлден қалмай, сен де қатыс. Дәл қазір мына сілтеме бойынша өт https://u.to/jqPgGQ?utm_source=wh&utm_medium=third&utm_campaign=invite\"\r\n}" % (
         chatIds[sendMessageIndex])
 
-    sendMessageIndex += 1
+    if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageIndex = 20000
 
-    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
-                                           data=sendMessageAt1850.encode('utf8'))
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
 
-    y = json.loads(sendMessageResponse.text.encode('utf8'))
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
 
-    print(y["idMessage"])
+        print(y["idMessage"])
 
-    print(sendMessageResponse.text.encode('utf8'))
+        print(sendMessageResponse.text.encode('utf8'))
 
-    print(chatIds[sendMessageIndex])
+        print(sendMessageIndex)
 
-    print(sendMessageIndex)
+        print("I'm working at 18-50")
 
-    print("I'm working at 18-50")
+    elif(sendMessageIndex != 20000):
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
+
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+        print(y["idMessage"])
+
+        print(sendMessageResponse.text.encode('utf8'))
+
+        print(sendMessageIndex)
+
+        print("I'm working at 18-50")
+
+        sendMessageIndex += 1
 
 def sendMessageAt1853():
     global sendMessageIndex
@@ -221,22 +307,37 @@ def sendMessageAt1853():
     sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ҚҰНЫ 1.000.000 тг ТҰРАТЫН САБАҚТЫ ТЕГІН АЛ 😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы Алматы қаласы бойынша бүгін 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇 https://u.to/jqPgGQ?utm_source=wh&utm_medium=fours&utm_campaign=invite\"\r\n}" % (
         chatIds[sendMessageIndex])
 
-    sendMessageIndex += 1
+    if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageIndex = 20000
 
-    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
-                                           data=sendMessageAt1850.encode('utf8'))
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
 
-    y = json.loads(sendMessageResponse.text.encode('utf8'))
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
 
-    print(y["idMessage"])
+        print(y["idMessage"])
 
-    print(sendMessageResponse.text.encode('utf8'))
+        print(sendMessageResponse.text.encode('utf8'))
 
-    print(chatIds[sendMessageIndex])
+        print(sendMessageIndex)
 
-    print(sendMessageIndex)
+        print("I'm working at 18-50")
 
-    print("I'm working at 18-50")
+    elif(sendMessageIndex != 20000):
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
+
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+        print(y["idMessage"])
+
+        print(sendMessageResponse.text.encode('utf8'))
+
+        print(sendMessageIndex)
+
+        print("I'm working at 18-50")
+
+        sendMessageIndex += 1
 
 def sendMessageAt1854():
     global sendMessageIndex
@@ -245,22 +346,37 @@ def sendMessageAt1854():
     sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ОСЫ ГРУППДАҒЫ БАРЛЫҚ АДАМДЫ ҚОНАҚҚА ШАҚЫРАМЫН😍🔥\\n\\nБірақ карантин болғандықтан, үйіме онлайн қонақ боласыз. Келгендерге арнайы бонус-сарқыт дайындап қойдым. Бүгін Алматы уақыты бойынша 19.00-да күтем. Кешікпеңіз🥳🔥 https://u.to/jqPgGQ?utm_source=wh&utm_medium=fives&utm_campaign=invite\\n\\n(С) ҚУАНЫШ ШОНБАЙ\"\r\n}" % (
         chatIds[sendMessageIndex])
 
-    sendMessageIndex += 1
+    if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageIndex = 20000
 
-    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
-                                           data=sendMessageAt1850.encode('utf8'))
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
 
-    y = json.loads(sendMessageResponse.text.encode('utf8'))
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
 
-    print(y["idMessage"])
+        print(y["idMessage"])
 
-    print(sendMessageResponse.text.encode('utf8'))
+        print(sendMessageResponse.text.encode('utf8'))
 
-    print(chatIds[sendMessageIndex])
+        print(sendMessageIndex)
 
-    print(sendMessageIndex)
+        print("I'm working at 18-50")
 
-    print("I'm working at 18-50")
+    elif(sendMessageIndex != 20000):
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
+
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+        print(y["idMessage"])
+
+        print(sendMessageResponse.text.encode('utf8'))
+
+        print(sendMessageIndex)
+
+        print("I'm working at 18-50")
+
+        sendMessageIndex += 1
 
 def sendMessageAt1855():
     global sendMessageIndex
@@ -269,22 +385,37 @@ def sendMessageAt1855():
     sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТЫҢДЫ КИНОҒА ҚҰРТҚАНША, ҚУАНЫШ ШОНБАЙДАН ТЕГІН БІЛІМ АЛ😍\\n\\nБүгін Алматы уақыты бойынша 19.00-21.00 аралығында не істейсің? Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸\\n\\nДәл қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=sixes&utm_campaign=invite\"\r\n}" % (
         chatIds[sendMessageIndex])
 
-    sendMessageIndex += 1
+    if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageIndex = 20000
 
-    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
-                                           data=sendMessageAt1850.encode('utf8'))
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
 
-    y = json.loads(sendMessageResponse.text.encode('utf8'))
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
 
-    print(y["idMessage"])
+        print(y["idMessage"])
 
-    print(sendMessageResponse.text.encode('utf8'))
+        print(sendMessageResponse.text.encode('utf8'))
 
-    print(chatIds[sendMessageIndex])
+        print(sendMessageIndex)
 
-    print(sendMessageIndex)
+        print("I'm working at 18-50")
 
-    print("I'm working at 18-50")
+    elif(sendMessageIndex != 20000):
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
+
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+        print(y["idMessage"])
+
+        print(sendMessageResponse.text.encode('utf8'))
+
+        print(sendMessageIndex)
+
+        print("I'm working at 18-50")
+
+        sendMessageIndex += 1
 
 def sendMessageAt1856():
     global sendMessageIndex
@@ -293,22 +424,37 @@ def sendMessageAt1856():
     sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ЖАЛПЫ ҚҰНЫ 1.000.000 тг ТҰРАТЫН БІЛІМДІ ТЕГІН АЛ 😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы бүгін Алматы уақыты бойынша 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=sevens&utm_campaign=invite\"\r\n}" % (
         chatIds[sendMessageIndex])
 
-    sendMessageIndex += 1
+    if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageIndex = 20000
 
-    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
-                                           data=sendMessageAt1850.encode('utf8'))
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
 
-    y = json.loads(sendMessageResponse.text.encode('utf8'))
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
 
-    print(y["idMessage"])
+        print(y["idMessage"])
 
-    print(sendMessageResponse.text.encode('utf8'))
+        print(sendMessageResponse.text.encode('utf8'))
 
-    print(chatIds[sendMessageIndex])
+        print(sendMessageIndex)
 
-    print(sendMessageIndex)
+        print("I'm working at 18-50")
 
-    print("I'm working at 18-50")
+    elif(sendMessageIndex != 20000):
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
+
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+        print(y["idMessage"])
+
+        print(sendMessageResponse.text.encode('utf8'))
+
+        print(sendMessageIndex)
+
+        print("I'm working at 18-50")
+
+        sendMessageIndex += 1
 
 def sendMessageAt1857():
     global sendMessageIndex
@@ -317,22 +463,37 @@ def sendMessageAt1857():
     sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ҚУАНЫШ ШОНБАЙДАН ТЕГІН САБАҚ😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы Алматы қаласы бойынша бүгін 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=eights&utm_campaign=invite\"\r\n}" % (
         chatIds[sendMessageIndex])
 
-    sendMessageIndex += 1
+    if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageIndex = 20000
 
-    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
-                                           data=sendMessageAt1850.encode('utf8'))
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
 
-    y = json.loads(sendMessageResponse.text.encode('utf8'))
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
 
-    print(y["idMessage"])
+        print(y["idMessage"])
 
-    print(sendMessageResponse.text.encode('utf8'))
+        print(sendMessageResponse.text.encode('utf8'))
 
-    print(chatIds[sendMessageIndex])
+        print(sendMessageIndex)
 
-    print(sendMessageIndex)
+        print("I'm working at 18-50")
 
-    print("I'm working at 18-50")
+    elif(sendMessageIndex != 20000):
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
+
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+        print(y["idMessage"])
+
+        print(sendMessageResponse.text.encode('utf8'))
+
+        print(sendMessageIndex)
+
+        print("I'm working at 18-50")
+
+        sendMessageIndex += 1
 
 def sendMessageAt1858():
     global sendMessageIndex
@@ -341,22 +502,37 @@ def sendMessageAt1858():
     sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТЫҢДЫ КИНОҒА ҚҰРТҚАНША, ҚУАНЫШ ШОНБАЙДАН БІЛІМ АЛ 😍\\n\\nАлматы уақыты бойынша 19.00-21.00 аралығында не істейсің? Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸\\n\\nТура қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=nines&utm_campaign=invite\"\r\n}" % (
         chatIds[sendMessageIndex])
 
-    sendMessageIndex += 1
+    if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageIndex = 20000
 
-    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
-                                           data=sendMessageAt1850.encode('utf8'))
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
 
-    y = json.loads(sendMessageResponse.text.encode('utf8'))
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
 
-    print(y["idMessage"])
+        print(y["idMessage"])
 
-    print(sendMessageResponse.text.encode('utf8'))
+        print(sendMessageResponse.text.encode('utf8'))
 
-    print(chatIds[sendMessageIndex])
+        print(sendMessageIndex)
 
-    print(sendMessageIndex)
+        print("I'm working at 18-50")
 
-    print("I'm working at 18-50")
+    elif(sendMessageIndex != 20000):
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
+
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+        print(y["idMessage"])
+
+        print(sendMessageResponse.text.encode('utf8'))
+
+        print(sendMessageIndex)
+
+        print("I'm working at 18-50")
+
+        sendMessageIndex += 1
 
 def sendMessageAt1859():
     global sendMessageIndex
@@ -365,22 +541,37 @@ def sendMessageAt1859():
     sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ЖАЛПЫ ҚҰНЫ 1.000.000 тг ТҰРАТЫН САБАҚТЫ ТЕГІН АЛ 😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы бүгін 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=tens&utm_campaign=invite\"\r\n}" % (
         chatIds[sendMessageIndex])
 
-    sendMessageIndex = 0
+    if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageIndex = 20000
 
-    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
-                                           data=sendMessageAt1850.encode('utf8'))
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
 
-    y = json.loads(sendMessageResponse.text.encode('utf8'))
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
 
-    print(y["idMessage"])
+        print(y["idMessage"])
 
-    print(sendMessageResponse.text.encode('utf8'))
+        print(sendMessageResponse.text.encode('utf8'))
 
-    print(chatIds[sendMessageIndex])
+        print(sendMessageIndex)
 
-    print(sendMessageIndex)
+        print("I'm working at 18-50")
 
-    print("I'm working at 18-50")
+    elif(sendMessageIndex != 20000):
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
+
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+        print(y["idMessage"])
+
+        print(sendMessageResponse.text.encode('utf8'))
+
+        print(sendMessageIndex)
+
+        print("I'm working at 18-50")
+
+        sendMessageIndex += 1
 
 def sendMessageAt1910():
     global sendMessageIndex
@@ -1536,12 +1727,11 @@ def jobsendToOldMessageUrlAt2122():
 
 def sendFirstMessageToFilledGroup(charIdIndex):
     global chatIds
-    global sendMessageIndex
 
-    print(str(sendMessageIndex)+" sendMessageIndex")
-    print(str(chatIds[sendMessageIndex]) + "chatIds sendMessageIndex")
+    print(str(charIdIndex)+" sendMessageIndex")
+    print(str(chatIds[charIdIndex]) + "chatIds sendMessageIndex")
 
-    sendMessageAt1850 = "{{\r\n\t\"chatId\": \"{}\",\r\n\t\"message\": \"Сәлем, байланыста Қуаныш Шонбай!\\n\\nҚұттықтаймын! Сен мастер-классқа сәтті тіркелдің!🥳\\n\\nБүгінгі тегін мастер-класс сілтемесін осы топқа жіберемін. Мастер-класста көріскенше🙌🏻\"\r\n}}".format(chatIds[sendMessageIndex])
+    sendMessageAt1850 = "{{\r\n\t\"chatId\": \"{}\",\r\n\t\"message\": \"Сәлем, байланыста Қуаныш Шонбай!\\n\\nҚұттықтаймын! Сен мастер-классқа сәтті тіркелдің!🥳\\n\\nБүгінгі тегін мастер-класс сілтемесін осы топқа жіберемін. Мастер-класста көріскенше🙌🏻\"\r\n}}".format(chatIds[charIdIndex])
 
     sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                            data=sendMessageAt1850.encode('utf8'))
@@ -1598,7 +1788,7 @@ def changeGroupInviteLinks():
 # sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime)
 
 # sched.add_job(createGruopSecond, trigger='date', next_run_time=JustOnes)
-sched.add_job(createGruopSecond, 'date', run_date='2020-12-19 22:10:00')
+sched.add_job(createGruopSecond, 'date', run_date='2020-12-21 18:15:00')
 
 def sendMessageAtExample():
     global sendMessageIndex
@@ -1617,8 +1807,6 @@ def sendMessageAtExample():
 
     print(sendMessageResponse.text.encode('utf8'))
 
-    # print(chatIds[sendMessageIndex])
-
     print(sendMessageIndex)
 
     print("I'm working at 18-50")
@@ -1632,23 +1820,36 @@ def sendMessageAtExampleUrl():
 
     sendMessageAt1850 = "{{\r\n\t\"chatId\": \"{}\",\r\n\t\"message\": \"https://shonbay.school/bt\"\r\n}}".format(chatIds[sendMessageIndex])
 
-    sendMessageIndex +=1
+    if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageIndex = 20000
 
-    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
-                                           data=sendMessageAt1850.encode('utf8'))
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
 
-    y = json.loads(sendMessageResponse.text.encode('utf8'))
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
 
-    print(y["idMessage"])
+        print(y["idMessage"])
 
-    print(sendMessageResponse.text.encode('utf8'))
+        print(sendMessageResponse.text.encode('utf8'))
 
-    # print(chatIds[sendMessageIndex])
+        print(sendMessageIndex)
 
-    print(sendMessageIndex)
+        print("I'm working at 18-50")
+    elif(sendMessageIndex != 20000):
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
 
-    print("I'm working at 18-50")
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
 
+        print(y["idMessage"])
+
+        print(sendMessageResponse.text.encode('utf8'))
+
+        print(sendMessageIndex)
+
+        print("I'm working at 18-50")
+
+        sendMessageIndex += 1
 def ExampleMessageJob():
     sendMessageAtExample()
 
@@ -1675,27 +1876,106 @@ sched.add_job(func=my_job, args=['job running'], trigger='interval', id='job', m
 # NinesMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"08"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 # TensMessageTime = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"16"+":"+"09"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 
-sched.add_job(ExampleMessageJob, trigger='cron', hour=22, minute=10, second=10)
-sched.add_job(ExampleMessageUrlJob, trigger='cron', hour=22, minute=10, second=20)
-sched.add_job(ExampleMessageJob, trigger='cron', hour=22, minute=11, second=10)
-sched.add_job(ExampleMessageUrlJob, trigger='cron', hour=22, minute=11, second=20)
+# sched.add_job(ExampleMessageJob, trigger='cron', hour=12, minute=20, second=10)
+# sched.add_job(ExampleMessageUrlJob, trigger='cron', hour=12, minute=20, second=20)
+# sched.add_job(ExampleMessageJob, trigger='cron', hour=12, minute=21, second=10)
+# sched.add_job(ExampleMessageUrlJob, trigger='cron', hour=12, minute=21, second=20)
 
-# sched.add_job(jobsendMessageAt1850, trigger='date', next_run_time=FirstMessageTime)
-# sched.add_job(jobsendMessageAt1851, trigger='date', next_run_time=SecondMessageTime)
-# sched.add_job(jobsendMessageAt1852, trigger='date', next_run_time=ThirdMessageTime)
-# sched.add_job(jobsendMessageAt1853, trigger='date', next_run_time=FoursMessageTime)
-# sched.add_job(jobsendMessageAt1854, trigger='date', next_run_time=FivesMessageTime)
-# sched.add_job(jobsendMessageAt1855, trigger='date', next_run_time=SixesMessageTime)
-# sched.add_job(jobsendMessageAt1856, trigger='date', next_run_time=SevensMessageTime)
-# sched.add_job(jobsendMessageAt1857, trigger='date', next_run_time=EightsMessageTime)
-# sched.add_job(jobsendMessageAt1858, trigger='date', next_run_time=NinesMessageTime)
-# sched.add_job(jobsendMessageAt1859, trigger='date', next_run_time=TensMessageTime)
+# def createGroupTimely():
+#     createTimelyGroup()
+#
+# def yesterdayChatIdsCheck():
+#     print("I'm working at yesterdayChatIdsCheck")
+#     if (len(chatIdsYesterday) != 0):
+#         print("I'm working at yesterdayChatIdsCheck len")
+#         sched.add_job(jobsendMessageAt1910, trigger='cron', hour=15, minute=29, second=30)
+#         sched.add_job(jobsendMessageAt1911, trigger='cron', hour=15, minute=29, second=40)
+#     # else:
+#     #     print("I'm working at yesterdayChatIdsCheck not len")
+#     #     changeGroupInviteLinks()
+#
+# sched.add_job(changeGroupInviteLinks, trigger='cron', hour=15, minute=29, second=10)
+# sched.add_job(yesterdayChatIdsCheck, trigger='cron', hour=15, minute=29, second=20)
+
+sched.add_job(jobsendMessageAt1850, trigger='cron', hour=18, minute=16, second=0)
+sched.add_job(jobsendMessageAt1851, trigger='cron', hour=18, minute=17, second=0)
+sched.add_job(jobsendMessageAt1852, trigger='cron', hour=18, minute=18, second=0)
+sched.add_job(jobsendMessageAt1853, trigger='cron', hour=18, minute=19, second=0)
+sched.add_job(jobsendMessageAt1854, trigger='cron', hour=18, minute=20, second=0)
+sched.add_job(jobsendMessageAt1855, trigger='cron', hour=18, minute=21, second=0)
+sched.add_job(jobsendMessageAt1856, trigger='cron', hour=18, minute=22, second=0)
+sched.add_job(jobsendMessageAt1857, trigger='cron', hour=18, minute=23, second=0)
+sched.add_job(jobsendMessageAt1858, trigger='cron', hour=18, minute=24, second=0)
+sched.add_job(jobsendMessageAt1859, trigger='cron', hour=18, minute=25, second=0)
+
+sched.add_job(changeGroupInviteLinks, trigger='cron', hour=18, minute=20, second=00)
+
+# sched.add_job(changeGroupInviteLinks, trigger='cron', hour=19, minute=00, second=00)
+
+# sched.add_job(yesterdayChatIdsCheck, trigger='cron', hour=19, minute=0, second=30)
+
+# sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=01, second=0)
+# sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=02, second=0)
+# sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=03, second=0)
+# sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=04, second=0)
+# sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=05, second=0)
+# sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=06, second=0)
+# sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=07, second=0)
+# sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=08, second=0)
+# sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=09, second=0)
+
+# sched.add_job(jobsendMessageAt1910, trigger='cron', hour=19, minute=10, second=0)
+# sched.add_job(jobsendMessageAt1911, trigger='cron', hour=19, minute=11, second=0)
+# sched.add_job(jobsendMessageAt1912, trigger='cron', hour=19, minute=12, second=0)
+# sched.add_job(jobsendMessageAt1913, trigger='cron', hour=19, minute=13, second=0)
+# sched.add_job(jobsendMessageAt1914, trigger='cron', hour=19, minute=14, second=0)
+# sched.add_job(jobsendMessageAt1915, trigger='cron', hour=19, minute=15, second=0)
+# sched.add_job(jobsendMessageAt1916, trigger='cron', hour=19, minute=16, second=0)
+# sched.add_job(jobsendMessageAt1917, trigger='cron', hour=19, minute=17, second=0)
+# sched.add_job(jobsendMessageAt1918, trigger='cron', hour=19, minute=18, second=0)
+# sched.add_job(jobsendMessageAt1919, trigger='cron', hour=19, minute=19, second=0)
+
+# sched.add_job(jobsendMessageAt1930, trigger='cron', hour=19, minute=30, second=0)
+# sched.add_job(jobsendMessageAt1931, trigger='cron', hour=19, minute=31, second=0)
+# sched.add_job(jobsendMessageAt1932, trigger='cron', hour=19, minute=32, second=0)
+# sched.add_job(jobsendMessageAt1933, trigger='cron', hour=19, minute=33, second=0)
+# sched.add_job(jobsendMessageAt1934, trigger='cron', hour=19, minute=34, second=0)
+# sched.add_job(jobsendMessageAt1935, trigger='cron', hour=19, minute=35, second=0)
+# sched.add_job(jobsendMessageAt1936, trigger='cron', hour=19, minute=36, second=0)
+# sched.add_job(jobsendMessageAt1937, trigger='cron', hour=19, minute=37, second=0)
+# sched.add_job(jobsendMessageAt1938, trigger='cron', hour=19, minute=38, second=0)
+# sched.add_job(jobsendMessageAt1939, trigger='cron', hour=19, minute=39, second=0)
+
+# sched.add_job(jobsendToOldMessageAt2113, trigger='cron', hour=21, minute=13, second=0)
+# sched.add_job(jobsendToOldMessageAt2114, trigger='cron', hour=21, minute=14, second=0)
+# sched.add_job(jobsendToOldMessageAt2115, trigger='cron', hour=21, minute=15, second=0)
+# sched.add_job(jobsendToOldMessageAt2116, trigger='cron', hour=21, minute=16, second=0)
+# sched.add_job(jobsendToOldMessageAt2117, trigger='cron', hour=21, minute=17, second=0)
+# sched.add_job(jobsendToOldMessageAt2118, trigger='cron', hour=21, minute=18, second=0)
+# sched.add_job(jobsendToOldMessageAt2119, trigger='cron', hour=21, minute=19, second=0)
+# sched.add_job(jobsendToOldMessageAt2120, trigger='cron', hour=21, minute=20, second=0)
+# sched.add_job(jobsendToOldMessageAt2121, trigger='cron', hour=21, minute=21, second=0)
+# sched.add_job(jobsendToOldMessageAt2122, trigger='cron', hour=21, minute=22, second=0)
+
+# sched.add_job(jobsendToOldMessageUrlAt2113, trigger='cron', hour=21, minute=13, second=10)
+# sched.add_job(jobsendToOldMessageUrlAt2114, trigger='cron', hour=21, minute=14, second=10)
+# sched.add_job(jobsendToOldMessageUrlAt2115, trigger='cron', hour=21, minute=15, second=10)
+# sched.add_job(jobsendToOldMessageUrlAt2116, trigger='cron', hour=21, minute=16, second=10)
+# sched.add_job(jobsendToOldMessageUrlAt2117, trigger='cron', hour=21, minute=17, second=10)
+# sched.add_job(jobsendToOldMessageUrlAt2118, trigger='cron', hour=21, minute=18, second=10)
+# sched.add_job(jobsendToOldMessageUrlAt2119, trigger='cron', hour=21, minute=19, second=10)
+# sched.add_job(jobsendToOldMessageUrlAt2120, trigger='cron', hour=21, minute=20, second=10)
+# sched.add_job(jobsendToOldMessageUrlAt2121, trigger='cron', hour=21, minute=21, second=10)
+# sched.add_job(jobsendToOldMessageUrlAt2122, trigger='cron', hour=21, minute=22, second=10)
+
+
+
 #
 # ChangeGroupInviteLinksTime2 = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"00"+":"+"00"), '%Y-%m-%dT%H:%M:%S')
 # #
 # sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime2)
 #
-# FirstGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"00"+":"+"10"), '%Y-%m-%dT%H:%M:%S')
+# FirstGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"00"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 # SecondGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"01"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 # ThirdGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"02"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
 # FoursGroupCreationDate_time = datetime.datetime.strptime(str(year+"-"+month+"-"+day+"T"+"19"+":"+"03"+":"+"20"), '%Y-%m-%dT%H:%M:%S')
@@ -1814,21 +2094,42 @@ def index():
     global number
     number += 1
     global chatInviteLinksToday
+    global chatIds
+    global createdChatIds17
+    global createdInviteLinks17
+    global filledArrayIndex
     global inviteLinksIndex
     print(str(number)+" this is number")
     print(str(inviteLinksIndex) + " this is inviteLinksIndex")
     print(str(len(chatInviteLinksToday)) + " this is len chatInviteLinksToday")
     if number >= 256:
-            if inviteLinksIndex == len(chatInviteLinksToday) - 1:
-                number = 0
-                inviteLinksIndex = inviteLinksIndex
-                sendFirstMessageToFilledGroup(inviteLinksIndex)
+        if inviteLinksIndex == len(chatInviteLinksToday) - 1:
+            number = 0
+            chatInviteLinksToday.append(createdInviteLinks17[filledArrayIndex])
+            chatIds.append(createdChatIds17[filledArrayIndex])
+            sendFirstMessageToFilledGroup(inviteLinksIndex)
+            if filledArrayIndex == 0:
+                createGroup()
             else:
-                number = 0
-                sendFirstMessageToFilledGroup(inviteLinksIndex)
-                inviteLinksIndex += 1
-            return redirect(chatInviteLinksToday[inviteLinksIndex])
+                print(str(filledArrayIndex) + " this is filledArrayIndex before")
+                filledArrayIndex -= 1
+                print(str(filledArrayIndex) + " this is filledArrayIndex after")
+            print(str(inviteLinksIndex) + " this is inviteLinksIndex before")
+            inviteLinksIndex = len(chatInviteLinksToday) - 1
+            print(str(inviteLinksIndex) + " this is inviteLinksIndex after")
+        else:
+            number = 0
+            sendFirstMessageToFilledGroup(inviteLinksIndex)
+            print(str(inviteLinksIndex) + " this is inviteLinksIndex before")
+            inviteLinksIndex += 1
+            print(str(inviteLinksIndex) + " this is inviteLinksIndex after")
+        print(str(inviteLinksIndex) + " this is inviteLinksIndex redirect")
+        return redirect(chatInviteLinksToday[inviteLinksIndex])
     else:
+        print(str(inviteLinksIndex) + " this is inviteLinksIndex redirect")
+        if(len(chatIds) == 0):
+            createGroup()
+            inviteLinksIndex = 0
         return redirect(chatInviteLinksToday[inviteLinksIndex])
 
 if __name__ == "__main__":
