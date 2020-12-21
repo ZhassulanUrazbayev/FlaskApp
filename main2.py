@@ -1908,7 +1908,7 @@ sched.add_job(jobsendMessageAt1857, trigger='cron', hour=18, minute=23, second=0
 sched.add_job(jobsendMessageAt1858, trigger='cron', hour=18, minute=24, second=0)
 sched.add_job(jobsendMessageAt1859, trigger='cron', hour=18, minute=25, second=0)
 
-sched.add_job(changeGroupInviteLinks, trigger='cron', hour=18, minute=20, second=00)
+sched.add_job(changeGroupInviteLinks, trigger='cron', hour=18, minute=26, second=00)
 
 # sched.add_job(changeGroupInviteLinks, trigger='cron', hour=19, minute=00, second=00)
 
