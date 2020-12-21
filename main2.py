@@ -1788,7 +1788,7 @@ def changeGroupInviteLinks():
 # sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime)
 
 # sched.add_job(createGruopSecond, trigger='date', next_run_time=JustOnes)
-sched.add_job(createGruopSecond, 'date', run_date='2020-12-21 18:15:00')
+sched.add_job(createGruopSecond, 'date', run_date='2020-12-21 18:20:00')
 
 def sendMessageAtExample():
     global sendMessageIndex
@@ -1897,18 +1897,18 @@ sched.add_job(func=my_job, args=['job running'], trigger='interval', id='job', m
 # sched.add_job(changeGroupInviteLinks, trigger='cron', hour=15, minute=29, second=10)
 # sched.add_job(yesterdayChatIdsCheck, trigger='cron', hour=15, minute=29, second=20)
 
-sched.add_job(jobsendMessageAt1850, trigger='cron', hour=18, minute=16, second=0)
-sched.add_job(jobsendMessageAt1851, trigger='cron', hour=18, minute=17, second=0)
-sched.add_job(jobsendMessageAt1852, trigger='cron', hour=18, minute=18, second=0)
-sched.add_job(jobsendMessageAt1853, trigger='cron', hour=18, minute=19, second=0)
-sched.add_job(jobsendMessageAt1854, trigger='cron', hour=18, minute=20, second=0)
-sched.add_job(jobsendMessageAt1855, trigger='cron', hour=18, minute=21, second=0)
-sched.add_job(jobsendMessageAt1856, trigger='cron', hour=18, minute=22, second=0)
-sched.add_job(jobsendMessageAt1857, trigger='cron', hour=18, minute=23, second=0)
-sched.add_job(jobsendMessageAt1858, trigger='cron', hour=18, minute=24, second=0)
-sched.add_job(jobsendMessageAt1859, trigger='cron', hour=18, minute=25, second=0)
+sched.add_job(jobsendMessageAt1850, trigger='cron', hour=18, minute=25, second=0)
+sched.add_job(jobsendMessageAt1851, trigger='cron', hour=18, minute=26, second=0)
+sched.add_job(jobsendMessageAt1852, trigger='cron', hour=18, minute=27, second=0)
+sched.add_job(jobsendMessageAt1853, trigger='cron', hour=18, minute=28, second=0)
+sched.add_job(jobsendMessageAt1854, trigger='cron', hour=18, minute=29, second=0)
+sched.add_job(jobsendMessageAt1855, trigger='cron', hour=18, minute=30, second=0)
+sched.add_job(jobsendMessageAt1856, trigger='cron', hour=18, minute=31, second=0)
+sched.add_job(jobsendMessageAt1857, trigger='cron', hour=18, minute=32, second=0)
+sched.add_job(jobsendMessageAt1858, trigger='cron', hour=18, minute=33, second=0)
+sched.add_job(jobsendMessageAt1859, trigger='cron', hour=18, minute=34, second=0)
 
-sched.add_job(changeGroupInviteLinks, trigger='cron', hour=18, minute=26, second=00)
+# sched.add_job(changeGroupInviteLinks, trigger='cron', hour=18, minute=26, second=00)
 
 # sched.add_job(changeGroupInviteLinks, trigger='cron', hour=19, minute=00, second=00)
 
