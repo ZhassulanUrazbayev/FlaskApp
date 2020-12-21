@@ -226,10 +226,10 @@ def sendMessageAt1851():
     global sendMessageIndex
     global chatIds
 
-    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТ КИНО КӨРГЕНШЕ, ҚУАНЫШ ШОНБАЙДАН ТЕГІН БІЛІМ АЛ😍\\n\\nСен бүгін Алматы уақыты бойынша 19.00-21.00 аралығында не істейсің?Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸❤\\n\\nАл қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥 https://u.to/jqPgGQ?utm_source=wh&utm_medium=second&utm_campaign=invite\"\r\n}" % (
-        createdChatIds[sendMessageIndex])
-
     if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТ КИНО КӨРГЕНШЕ, ҚУАНЫШ ШОНБАЙДАН ТЕГІН БІЛІМ АЛ😍\\n\\nСен бүгін Алматы уақыты бойынша 19.00-21.00 аралығында не істейсің?Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸❤\\n\\nАл қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥 https://u.to/jqPgGQ?utm_source=wh&utm_medium=second&utm_campaign=invite\"\r\n}" % (
+            createdChatIds[sendMessageIndex])
+
         sendMessageIndex = 20000
 
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
@@ -246,6 +246,9 @@ def sendMessageAt1851():
         print("I'm working at 18-50")
 
     elif(sendMessageIndex != 20000):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТ КИНО КӨРГЕНШЕ, ҚУАНЫШ ШОНБАЙДАН ТЕГІН БІЛІМ АЛ😍\\n\\nСен бүгін Алматы уақыты бойынша 19.00-21.00 аралығында не істейсің?Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸❤\\n\\nАл қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥 https://u.to/jqPgGQ?utm_source=wh&utm_medium=second&utm_campaign=invite\"\r\n}" % (
+            createdChatIds[sendMessageIndex])
+
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                                data=sendMessageAt1850.encode('utf8'))
 
@@ -265,10 +268,10 @@ def sendMessageAt1852():
     global sendMessageIndex
     global chatIds
 
-    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ОСЫ ГРУППДАҒЫ БАРЛЫҚ АДАМДЫ ӨЗ ҮЙІМЕ ҚОНАҚҚА ШАҚЫРАМЫН😍🔥\\n\\nЕлдің бәрі тегін сабаққа кіріп, құнды білім алып жатыр. Ал сен әлі не істеріңді білмей отырсың 😑👎🏻\\n\\nЕлден қалмай, сен де қатыс. Дәл қазір мына сілтеме бойынша өт https://u.to/jqPgGQ?utm_source=wh&utm_medium=third&utm_campaign=invite\"\r\n}" % (
-        chatIds[sendMessageIndex])
-
     if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ОСЫ ГРУППДАҒЫ БАРЛЫҚ АДАМДЫ ӨЗ ҮЙІМЕ ҚОНАҚҚА ШАҚЫРАМЫН😍🔥\\n\\nЕлдің бәрі тегін сабаққа кіріп, құнды білім алып жатыр. Ал сен әлі не істеріңді білмей отырсың 😑👎🏻\\n\\nЕлден қалмай, сен де қатыс. Дәл қазір мына сілтеме бойынша өт https://u.to/jqPgGQ?utm_source=wh&utm_medium=third&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
+
         sendMessageIndex = 20000
 
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
@@ -285,6 +288,9 @@ def sendMessageAt1852():
         print("I'm working at 18-50")
 
     elif(sendMessageIndex != 20000):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ОСЫ ГРУППДАҒЫ БАРЛЫҚ АДАМДЫ ӨЗ ҮЙІМЕ ҚОНАҚҚА ШАҚЫРАМЫН😍🔥\\n\\nЕлдің бәрі тегін сабаққа кіріп, құнды білім алып жатыр. Ал сен әлі не істеріңді білмей отырсың 😑👎🏻\\n\\nЕлден қалмай, сен де қатыс. Дәл қазір мына сілтеме бойынша өт https://u.to/jqPgGQ?utm_source=wh&utm_medium=third&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
+
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                                data=sendMessageAt1850.encode('utf8'))
 
@@ -304,10 +310,9 @@ def sendMessageAt1853():
     global sendMessageIndex
     global chatIds
 
-    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ҚҰНЫ 1.000.000 тг ТҰРАТЫН САБАҚТЫ ТЕГІН АЛ 😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы Алматы қаласы бойынша бүгін 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇 https://u.to/jqPgGQ?utm_source=wh&utm_medium=fours&utm_campaign=invite\"\r\n}" % (
-        chatIds[sendMessageIndex])
-
     if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ҚҰНЫ 1.000.000 тг ТҰРАТЫН САБАҚТЫ ТЕГІН АЛ 😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы Алматы қаласы бойынша бүгін 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇 https://u.to/jqPgGQ?utm_source=wh&utm_medium=fours&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
         sendMessageIndex = 20000
 
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
@@ -324,6 +329,8 @@ def sendMessageAt1853():
         print("I'm working at 18-50")
 
     elif(sendMessageIndex != 20000):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ҚҰНЫ 1.000.000 тг ТҰРАТЫН САБАҚТЫ ТЕГІН АЛ 😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы Алматы қаласы бойынша бүгін 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇 https://u.to/jqPgGQ?utm_source=wh&utm_medium=fours&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                                data=sendMessageAt1850.encode('utf8'))
 
@@ -343,10 +350,10 @@ def sendMessageAt1854():
     global sendMessageIndex
     global chatIds
 
-    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ОСЫ ГРУППДАҒЫ БАРЛЫҚ АДАМДЫ ҚОНАҚҚА ШАҚЫРАМЫН😍🔥\\n\\nБірақ карантин болғандықтан, үйіме онлайн қонақ боласыз. Келгендерге арнайы бонус-сарқыт дайындап қойдым. Бүгін Алматы уақыты бойынша 19.00-да күтем. Кешікпеңіз🥳🔥 https://u.to/jqPgGQ?utm_source=wh&utm_medium=fives&utm_campaign=invite\\n\\n(С) ҚУАНЫШ ШОНБАЙ\"\r\n}" % (
-        chatIds[sendMessageIndex])
-
     if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ОСЫ ГРУППДАҒЫ БАРЛЫҚ АДАМДЫ ҚОНАҚҚА ШАҚЫРАМЫН😍🔥\\n\\nБірақ карантин болғандықтан, үйіме онлайн қонақ боласыз. Келгендерге арнайы бонус-сарқыт дайындап қойдым. Бүгін Алматы уақыты бойынша 19.00-да күтем. Кешікпеңіз🥳🔥 https://u.to/jqPgGQ?utm_source=wh&utm_medium=fives&utm_campaign=invite\\n\\n(С) ҚУАНЫШ ШОНБАЙ\"\r\n}" % (
+            chatIds[sendMessageIndex])
+
         sendMessageIndex = 20000
 
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
@@ -363,6 +370,9 @@ def sendMessageAt1854():
         print("I'm working at 18-50")
 
     elif(sendMessageIndex != 20000):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ОСЫ ГРУППДАҒЫ БАРЛЫҚ АДАМДЫ ҚОНАҚҚА ШАҚЫРАМЫН😍🔥\\n\\nБірақ карантин болғандықтан, үйіме онлайн қонақ боласыз. Келгендерге арнайы бонус-сарқыт дайындап қойдым. Бүгін Алматы уақыты бойынша 19.00-да күтем. Кешікпеңіз🥳🔥 https://u.to/jqPgGQ?utm_source=wh&utm_medium=fives&utm_campaign=invite\\n\\n(С) ҚУАНЫШ ШОНБАЙ\"\r\n}" % (
+            chatIds[sendMessageIndex])
+
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                                data=sendMessageAt1850.encode('utf8'))
 
@@ -382,10 +392,10 @@ def sendMessageAt1855():
     global sendMessageIndex
     global chatIds
 
-    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТЫҢДЫ КИНОҒА ҚҰРТҚАНША, ҚУАНЫШ ШОНБАЙДАН ТЕГІН БІЛІМ АЛ😍\\n\\nБүгін Алматы уақыты бойынша 19.00-21.00 аралығында не істейсің? Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸\\n\\nДәл қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=sixes&utm_campaign=invite\"\r\n}" % (
-        chatIds[sendMessageIndex])
-
     if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТЫҢДЫ КИНОҒА ҚҰРТҚАНША, ҚУАНЫШ ШОНБАЙДАН ТЕГІН БІЛІМ АЛ😍\\n\\nБүгін Алматы уақыты бойынша 19.00-21.00 аралығында не істейсің? Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸\\n\\nДәл қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=sixes&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
+
         sendMessageIndex = 20000
 
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
@@ -402,6 +412,9 @@ def sendMessageAt1855():
         print("I'm working at 18-50")
 
     elif(sendMessageIndex != 20000):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТЫҢДЫ КИНОҒА ҚҰРТҚАНША, ҚУАНЫШ ШОНБАЙДАН ТЕГІН БІЛІМ АЛ😍\\n\\nБүгін Алматы уақыты бойынша 19.00-21.00 аралығында не істейсің? Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸\\n\\nДәл қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=sixes&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
+
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                                data=sendMessageAt1850.encode('utf8'))
 
@@ -421,10 +434,10 @@ def sendMessageAt1856():
     global sendMessageIndex
     global chatIds
 
-    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ЖАЛПЫ ҚҰНЫ 1.000.000 тг ТҰРАТЫН БІЛІМДІ ТЕГІН АЛ 😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы бүгін Алматы уақыты бойынша 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=sevens&utm_campaign=invite\"\r\n}" % (
-        chatIds[sendMessageIndex])
-
     if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ЖАЛПЫ ҚҰНЫ 1.000.000 тг ТҰРАТЫН БІЛІМДІ ТЕГІН АЛ 😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы бүгін Алматы уақыты бойынша 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=sevens&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
+
         sendMessageIndex = 20000
 
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
@@ -441,6 +454,9 @@ def sendMessageAt1856():
         print("I'm working at 18-50")
 
     elif(sendMessageIndex != 20000):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ЖАЛПЫ ҚҰНЫ 1.000.000 тг ТҰРАТЫН БІЛІМДІ ТЕГІН АЛ 😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы бүгін Алматы уақыты бойынша 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=sevens&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
+
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                                data=sendMessageAt1850.encode('utf8'))
 
@@ -460,10 +476,9 @@ def sendMessageAt1857():
     global sendMessageIndex
     global chatIds
 
-    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ҚУАНЫШ ШОНБАЙДАН ТЕГІН САБАҚ😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы Алматы қаласы бойынша бүгін 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=eights&utm_campaign=invite\"\r\n}" % (
-        chatIds[sendMessageIndex])
-
     if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ҚУАНЫШ ШОНБАЙДАН ТЕГІН САБАҚ😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы Алматы қаласы бойынша бүгін 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=eights&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
         sendMessageIndex = 20000
 
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
@@ -480,6 +495,8 @@ def sendMessageAt1857():
         print("I'm working at 18-50")
 
     elif(sendMessageIndex != 20000):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ҚУАНЫШ ШОНБАЙДАН ТЕГІН САБАҚ😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы Алматы қаласы бойынша бүгін 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=eights&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                                data=sendMessageAt1850.encode('utf8'))
 
@@ -499,10 +516,9 @@ def sendMessageAt1858():
     global sendMessageIndex
     global chatIds
 
-    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТЫҢДЫ КИНОҒА ҚҰРТҚАНША, ҚУАНЫШ ШОНБАЙДАН БІЛІМ АЛ 😍\\n\\nАлматы уақыты бойынша 19.00-21.00 аралығында не істейсің? Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸\\n\\nТура қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=nines&utm_campaign=invite\"\r\n}" % (
-        chatIds[sendMessageIndex])
-
     if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТЫҢДЫ КИНОҒА ҚҰРТҚАНША, ҚУАНЫШ ШОНБАЙДАН БІЛІМ АЛ 😍\\n\\nАлматы уақыты бойынша 19.00-21.00 аралығында не істейсің? Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸\\n\\nТура қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=nines&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
         sendMessageIndex = 20000
 
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
@@ -519,6 +535,8 @@ def sendMessageAt1858():
         print("I'm working at 18-50")
 
     elif(sendMessageIndex != 20000):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТЫҢДЫ КИНОҒА ҚҰРТҚАНША, ҚУАНЫШ ШОНБАЙДАН БІЛІМ АЛ 😍\\n\\nАлматы уақыты бойынша 19.00-21.00 аралығында не істейсің? Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸\\n\\nТура қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=nines&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                                data=sendMessageAt1850.encode('utf8'))
 
@@ -538,10 +556,10 @@ def sendMessageAt1859():
     global sendMessageIndex
     global chatIds
 
-    sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ЖАЛПЫ ҚҰНЫ 1.000.000 тг ТҰРАТЫН САБАҚТЫ ТЕГІН АЛ 😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы бүгін 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=tens&utm_campaign=invite\"\r\n}" % (
-        chatIds[sendMessageIndex])
-
     if(len(chatIds)-1 == sendMessageIndex):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ЖАЛПЫ ҚҰНЫ 1.000.000 тг ТҰРАТЫН САБАҚТЫ ТЕГІН АЛ 😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы бүгін 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=tens&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
+
         sendMessageIndex = 20000
 
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
@@ -558,6 +576,9 @@ def sendMessageAt1859():
         print("I'm working at 18-50")
 
     elif(sendMessageIndex != 20000):
+        sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"ЖАЛПЫ ҚҰНЫ 1.000.000 тг ТҰРАТЫН САБАҚТЫ ТЕГІН АЛ 😍\\n\\nҚуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты мастер-классы бүгін 19.00-де өтеді. Тегін мастер-классқа қатысу үшін мына сілтеме бойынша өт: 👇\\n\\nhttps://u.to/jqPgGQ?utm_source=wh&utm_medium=tens&utm_campaign=invite\"\r\n}" % (
+            chatIds[sendMessageIndex])
+
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                                data=sendMessageAt1850.encode('utf8'))
 
@@ -1788,39 +1809,59 @@ def changeGroupInviteLinks():
 # sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime)
 
 # sched.add_job(createGruopSecond, trigger='date', next_run_time=JustOnes)
-sched.add_job(createGruopSecond, 'date', run_date='2020-12-21 18:20:00')
+sched.add_job(createGruopSecond, 'date', run_date='2020-12-21 20:00:00')
 
 def sendMessageAtExample():
     global sendMessageIndex
     global chatIds
+    if(len(chatIds)-1 == sendMessageIndex):
+        print(str(sendMessageIndex) + " sendMessageIndex")
+        print(str(chatIds[sendMessageIndex]) + "chatIds sendMessageIndex")
+        sendMessageAt1850 = "{{\r\n\t\"chatId\": \"{}\",\r\n\t\"message\": \"“ИНТЕРНЕТ-МАРКЕТОЛОГ” КУРСЫН КҮНІНЕ 408 ТЕҢГЕГЕ АЛ😎🤯\\n\\nShonbay Business School ұсынған “Интернет-маркетолог” курсына қатысу енді бұрынғыдан да қол жетімді. Өйткені сенде 31 желтоқсанға дейін курсты еш пайызсыз 12 айға бөліп төлеу мүмкіндігі бар😍\\n\\nДемек, “Интернет-маркетолог” курсын қазір алу арқылы сен күнделікті білім алуға бар болғаны 408 теңге жұмсайсың🙌🏻\\n\\nКурс барысында 3 ай көлемінде сен толық циклді интернет-маркетолог атанып, айына кем дегенде 200.000 теңге табыс табу мүмкіндігіне ие боласың. Оған қоса, сені үнемі қадағалауда ұстатайтын куратор, дамушы орта мен практик спикерлер күтеді😍\\n\\nБөліп төлеу туралы толық ақпарат алу үшін дәл қазір мына сілтеме бойынша өт: 👇🏻\"\r\n}}".format(
+            chatIds[sendMessageIndex])
 
-    print(str(sendMessageIndex) + " sendMessageIndex")
-    print(str(chatIds[sendMessageIndex]) + "chatIds sendMessageIndex")
-    sendMessageAt1850 = "{{\r\n\t\"chatId\": \"{}\",\r\n\t\"message\": \"“ИНТЕРНЕТ-МАРКЕТОЛОГ” КУРСЫН КҮНІНЕ 408 ТЕҢГЕГЕ АЛ😎🤯\\n\\nShonbay Business School ұсынған “Интернет-маркетолог” курсына қатысу енді бұрынғыдан да қол жетімді. Өйткені сенде 31 желтоқсанға дейін курсты еш пайызсыз 12 айға бөліп төлеу мүмкіндігі бар😍\\n\\nДемек, “Интернет-маркетолог” курсын қазір алу арқылы сен күнделікті білім алуға бар болғаны 408 теңге жұмсайсың🙌🏻\\n\\nКурс барысында 3 ай көлемінде сен толық циклді интернет-маркетолог атанып, айына кем дегенде 200.000 теңге табыс табу мүмкіндігіне ие боласың. Оған қоса, сені үнемі қадағалауда ұстатайтын куратор, дамушы орта мен практик спикерлер күтеді😍\\n\\nБөліп төлеу туралы толық ақпарат алу үшін дәл қазір мына сілтеме бойынша өт: 👇🏻\"\r\n}}".format(chatIds[sendMessageIndex])
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
 
-    sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
-                                           data=sendMessageAt1850.encode('utf8'))
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
 
-    y = json.loads(sendMessageResponse.text.encode('utf8'))
+        print(y["idMessage"])
 
-    print(y["idMessage"])
+        print(sendMessageResponse.text.encode('utf8'))
 
-    print(sendMessageResponse.text.encode('utf8'))
+        print(sendMessageIndex)
 
-    print(sendMessageIndex)
+        print("I'm working at 18-50")
+    elif(sendMessageIndex != 20000):
+        print(str(sendMessageIndex) + " sendMessageIndex")
+        print(str(chatIds[sendMessageIndex]) + "chatIds sendMessageIndex")
+        sendMessageAt1850 = "{{\r\n\t\"chatId\": \"{}\",\r\n\t\"message\": \"“ИНТЕРНЕТ-МАРКЕТОЛОГ” КУРСЫН КҮНІНЕ 408 ТЕҢГЕГЕ АЛ😎🤯\\n\\nShonbay Business School ұсынған “Интернет-маркетолог” курсына қатысу енді бұрынғыдан да қол жетімді. Өйткені сенде 31 желтоқсанға дейін курсты еш пайызсыз 12 айға бөліп төлеу мүмкіндігі бар😍\\n\\nДемек, “Интернет-маркетолог” курсын қазір алу арқылы сен күнделікті білім алуға бар болғаны 408 теңге жұмсайсың🙌🏻\\n\\nКурс барысында 3 ай көлемінде сен толық циклді интернет-маркетолог атанып, айына кем дегенде 200.000 теңге табыс табу мүмкіндігіне ие боласың. Оған қоса, сені үнемі қадағалауда ұстатайтын куратор, дамушы орта мен практик спикерлер күтеді😍\\n\\nБөліп төлеу туралы толық ақпарат алу үшін дәл қазір мына сілтеме бойынша өт: 👇🏻\"\r\n}}".format(
+            chatIds[sendMessageIndex])
 
-    print("I'm working at 18-50")
+        sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
+                                               data=sendMessageAt1850.encode('utf8'))
+
+        y = json.loads(sendMessageResponse.text.encode('utf8'))
+
+        print(y["idMessage"])
+
+        print(sendMessageResponse.text.encode('utf8'))
+
+        print(sendMessageIndex)
+
+        print("I'm working at 18-50")
 
 def sendMessageAtExampleUrl():
     global sendMessageIndex
     global chatIds
 
-    print(str(sendMessageIndex) + " sendMessageIndex")
-    print(str(chatIds[sendMessageIndex]) + "chatIds sendMessageIndex")
-
-    sendMessageAt1850 = "{{\r\n\t\"chatId\": \"{}\",\r\n\t\"message\": \"https://shonbay.school/bt\"\r\n}}".format(chatIds[sendMessageIndex])
-
     if(len(chatIds)-1 == sendMessageIndex):
+        print(str(sendMessageIndex) + " sendMessageIndex")
+        print(str(chatIds[sendMessageIndex]) + "chatIds sendMessageIndex")
+
+        sendMessageAt1850 = "{{\r\n\t\"chatId\": \"{}\",\r\n\t\"message\": \"https://shonbay.school/bt\"\r\n}}".format(
+            chatIds[sendMessageIndex])
+
         sendMessageIndex = 20000
 
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
@@ -1836,6 +1877,12 @@ def sendMessageAtExampleUrl():
 
         print("I'm working at 18-50")
     elif(sendMessageIndex != 20000):
+        print(str(sendMessageIndex) + " sendMessageIndex")
+        print(str(chatIds[sendMessageIndex]) + "chatIds sendMessageIndex")
+
+        sendMessageAt1850 = "{{\r\n\t\"chatId\": \"{}\",\r\n\t\"message\": \"https://shonbay.school/bt\"\r\n}}".format(
+            chatIds[sendMessageIndex])
+
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                                data=sendMessageAt1850.encode('utf8'))
 
@@ -1897,16 +1944,16 @@ sched.add_job(func=my_job, args=['job running'], trigger='interval', id='job', m
 # sched.add_job(changeGroupInviteLinks, trigger='cron', hour=15, minute=29, second=10)
 # sched.add_job(yesterdayChatIdsCheck, trigger='cron', hour=15, minute=29, second=20)
 
-sched.add_job(jobsendMessageAt1850, trigger='cron', hour=18, minute=25, second=0)
-sched.add_job(jobsendMessageAt1851, trigger='cron', hour=18, minute=26, second=0)
-sched.add_job(jobsendMessageAt1852, trigger='cron', hour=18, minute=27, second=0)
-sched.add_job(jobsendMessageAt1853, trigger='cron', hour=18, minute=28, second=0)
-sched.add_job(jobsendMessageAt1854, trigger='cron', hour=18, minute=29, second=0)
-sched.add_job(jobsendMessageAt1855, trigger='cron', hour=18, minute=30, second=0)
-sched.add_job(jobsendMessageAt1856, trigger='cron', hour=18, minute=31, second=0)
-sched.add_job(jobsendMessageAt1857, trigger='cron', hour=18, minute=32, second=0)
-sched.add_job(jobsendMessageAt1858, trigger='cron', hour=18, minute=33, second=0)
-sched.add_job(jobsendMessageAt1859, trigger='cron', hour=18, minute=34, second=0)
+sched.add_job(jobsendMessageAt1850, trigger='cron', hour=20, minute=1, second=0)
+sched.add_job(jobsendMessageAt1851, trigger='cron', hour=20, minute=2, second=0)
+sched.add_job(jobsendMessageAt1852, trigger='cron', hour=20, minute=3, second=0)
+sched.add_job(jobsendMessageAt1853, trigger='cron', hour=20, minute=4, second=0)
+sched.add_job(jobsendMessageAt1854, trigger='cron', hour=20, minute=5, second=0)
+sched.add_job(jobsendMessageAt1855, trigger='cron', hour=20, minute=6, second=0)
+sched.add_job(jobsendMessageAt1856, trigger='cron', hour=20, minute=7, second=0)
+sched.add_job(jobsendMessageAt1857, trigger='cron', hour=20, minute=8, second=0)
+sched.add_job(jobsendMessageAt1858, trigger='cron', hour=20, minute=9, second=0)
+sched.add_job(jobsendMessageAt1859, trigger='cron', hour=20, minute=10, second=0)
 
 # sched.add_job(changeGroupInviteLinks, trigger='cron', hour=18, minute=26, second=00)
 
