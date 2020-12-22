@@ -2286,7 +2286,7 @@ def changeGroupInviteLinks():
 # sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime)
 
 # sched.add_job(createGruopSecond, trigger='date', next_run_time=JustOnes)
-sched.add_job(createGruopSecond, 'date', run_date='2020-12-22 19:05:00')
+sched.add_job(createGruopSecond, 'date', run_date='2020-12-22 19:10:00')
 
 # def sendMessageAtExample():
 #     global sendMessageIndex
