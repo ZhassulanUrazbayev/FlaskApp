@@ -44,7 +44,10 @@ createdChatIds17 = ["77764497092-1608210014@g.us",
                     "77764497092-1608210442@g.us",
                     "77764497092-1608210503@g.us",
                     "77764497092-1608455536@g.us",
-                    "77764497092-1608455636@g.us"]
+                    "77764497092-1608455636@g.us",
+                    "77764497092-1608728581@g.us",
+                    "77764497092-1608728641@g.us",
+                    "77764497092-1608728641@g.us"]
 createdInviteLinks17 = ['https://chat.whatsapp.com/J8TnhYatkGVHITQY6Sl1zS',
                         'https://chat.whatsapp.com/K22nDxQeugN8yQn2Qix2EA',
                         'https://chat.whatsapp.com/HgEggPVP3OWFT05Joo6nwD',
@@ -55,7 +58,10 @@ createdInviteLinks17 = ['https://chat.whatsapp.com/J8TnhYatkGVHITQY6Sl1zS',
                         'https://chat.whatsapp.com/IShLAu7wQy7GMws8gqrh6d',
                         'https://chat.whatsapp.com/DL1IZAPkjLXLZPb4LS8HIg',
                         "https://chat.whatsapp.com/KElpZEnpe1kDkCWB5swUAz",
-                        "https://chat.whatsapp.com/F6DO1FzRf5Y5LFWhrDfmws"]
+                        "https://chat.whatsapp.com/F6DO1FzRf5Y5LFWhrDfmws",
+                        'https://chat.whatsapp.com/CcjSS5WjL6j6mwQeU9Lwqp',
+                        'https://chat.whatsapp.com/Khy2IG19y337mrjdEEzi1G',
+                        'https://chat.whatsapp.com/GFDooqc5wAyGdBGLLmSy24']
 
 newestChatIds = ["77764497092-1607055302@g.us","77764497092-1607055242@g.us","77764497092-1607055182@g.us","77764497092-1607055122@g.us","77764497092-1607055063@g.us","77764497092-1607055002@g.us","77764497092-1607054942@g.us","77764497092-1607054883@g.us","77764497092-1607054824@g.us","77764497092-1607054764@g.us"]
 newestInviteLinks = ["https://chat.whatsapp.com/IUEDsa1eLRcCavmHqLs38c","https://chat.whatsapp.com/H09cgpDt9yuGhlMxtcGPJm","https://chat.whatsapp.com/LwWNwGEWi4M2Uyq1yBQknp","https://chat.whatsapp.com/KM1UTVXwNLL58fIBGHHqp4","https://chat.whatsapp.com/FYjHY4yMKCnIM8DFbOmF9S","https://chat.whatsapp.com/CwaHSZBGwFtDCTlNwb48hy","https://chat.whatsapp.com/EzPJ1OvCV6eInsXPPuI7on","https://chat.whatsapp.com/I9BhGRcAVIiBIqiNo4clcE","https://chat.whatsapp.com/LiJn43o92SK3zf97cUSHc5","https://chat.whatsapp.com/BJTh3b8gaSmJ2ECzJAzVrw"]
@@ -2286,7 +2292,7 @@ def changeGroupInviteLinks():
 # sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime)
 
 # sched.add_job(createGruopSecond, trigger='date', next_run_time=JustOnes)
-sched.add_job(createGruopSecond, 'date', run_date='2020-12-23 19:10:00')
+sched.add_job(createGruopSecond, 'date', run_date='2020-12-23 19:30:00')
 
 # def sendMessageAtExample():
 #     global sendMessageIndex
@@ -2411,12 +2417,14 @@ sched.add_job(func=my_job, args=['job running'], trigger='interval', id='job', m
 def yesterdayChatIdsCheck():
     print("I'm working at yesterdayChatIdsCheck")
     if (len(chatIdsYesterday) != 0):
+        global filledArrayIndex
         print("I'm working at yesterdayChatIdsCheck len")
-        sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=1, second=0)
-        sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=2, second=0)
-        sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=3, second=0)
-        sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=4, second=0)
-        sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=5, second=0)
+        if(filledArrayIndex < 5):
+            sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=1, second=0)
+            sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=2, second=0)
+            sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=3, second=0)
+            sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=4, second=0)
+            sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=5, second=0)
         # sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=6, second=0)
         # sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=7, second=0)
         # sched.add_job(createTimelyGroup, trigger='cron', hour=19, minute=8, second=0)
