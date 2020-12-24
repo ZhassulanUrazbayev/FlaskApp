@@ -49,7 +49,8 @@ createdChatIds17 = ["77764497092-1608210014@g.us",
                     "77764497092-1608455636@g.us",
                     "77764497092-1608728581@g.us",
                     "77764497092-1608728641@g.us",
-                    "77764497092-1608728641@g.us"]
+                    "77764497092-1608728641@g.us",
+                    "77764497092-1608815227@g.us"]
 createdInviteLinks17 = ['https://chat.whatsapp.com/J8TnhYatkGVHITQY6Sl1zS',
                         'https://chat.whatsapp.com/K22nDxQeugN8yQn2Qix2EA',
                         'https://chat.whatsapp.com/HgEggPVP3OWFT05Joo6nwD',
@@ -63,7 +64,8 @@ createdInviteLinks17 = ['https://chat.whatsapp.com/J8TnhYatkGVHITQY6Sl1zS',
                         "https://chat.whatsapp.com/F6DO1FzRf5Y5LFWhrDfmws",
                         'https://chat.whatsapp.com/CcjSS5WjL6j6mwQeU9Lwqp',
                         'https://chat.whatsapp.com/Khy2IG19y337mrjdEEzi1G',
-                        'https://chat.whatsapp.com/GFDooqc5wAyGdBGLLmSy24']
+                        'https://chat.whatsapp.com/GFDooqc5wAyGdBGLLmSy24',
+                        'https://chat.whatsapp.com/EslfvbSkkty1YZ00dPdoO7']
 
 newestChatIds = [
     # "77764497092-1607055302@g.us","77764497092-1607055242@g.us","77764497092-1607055182@g.us","77764497092-1607055122@g.us","77764497092-1607055063@g.us","77764497092-1607055002@g.us","77764497092-1607054942@g.us","77764497092-1607054883@g.us","77764497092-1607054824@g.us","77764497092-1607054764@g.us"
