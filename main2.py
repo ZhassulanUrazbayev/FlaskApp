@@ -2302,7 +2302,7 @@ def changeGroupInviteLinks():
 # sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime)
 
 # sched.add_job(createGruopSecond, trigger='date', next_run_time=JustOnes)
-sched.add_job(createGruopSecond, 'date', run_date='2020-12-25 16:25:00')
+sched.add_job(createGruopSecond, 'date', run_date='2020-12-25 16:40:00')
 
 # def sendMessageAtExample():
 #     global sendMessageIndex
@@ -2491,9 +2491,9 @@ def yesterdayChatIdsCheck():
 sched.add_job(changeGroupInviteLinks, trigger='cron', hour=19, minute=00, second=10)
 sched.add_job(yesterdayChatIdsCheck, trigger='cron', hour=19, minute=00, second=20)
 
-sched.add_job(jobsendMessageAt1850, trigger='cron', hour=16, minute=30, second=0)
-sched.add_job(jobsendMessageAt1851, trigger='cron', hour=16, minute=31, second=0)
-sched.add_job(jobsendMessageAt1852, trigger='cron', hour=16, minute=32, second=0)
+sched.add_job(jobsendMessageAt1850, trigger='cron', hour=16, minute=42, second=0)
+sched.add_job(jobsendMessageAt1851, trigger='cron', hour=16, minute=43, second=0)
+sched.add_job(jobsendMessageAt1852, trigger='cron', hour=16, minute=44, second=0)
 sched.add_job(jobsendMessageAt1853, trigger='cron', hour=18, minute=53, second=0)
 sched.add_job(jobsendMessageAt1854, trigger='cron', hour=18, minute=54, second=0)
 sched.add_job(jobsendMessageAt1855, trigger='cron', hour=18, minute=55, second=0)
