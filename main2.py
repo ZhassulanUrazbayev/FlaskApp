@@ -34,7 +34,7 @@ dataInviteLinks = [
 sched = BackgroundScheduler(timezone='Asia/Almaty', executors=executors)
 
 createdChatIds = ["77764497092-1607055302@g.us","77764497092-1607055242@g.us"]
-createdInviteLinks = ["https://chat.whatsapp.com/IUEDsa1eLRcCavmHqLs38c","https://chat.whatsapp.com/H09cgpDt9yuGhlMxtcGPJm"]
+createdInviteLinks = ["https://chat.whatsapp.com/LiJn43o92SK3zf97cUSHc5","https://chat.whatsapp.com/BJTh3b8gaSmJ2ECzJAzVrw"]
 
 createdChatIds17 = ["77764497092-1608210014@g.us",
                     "77764497092-1608210085@g.us",
@@ -242,7 +242,7 @@ def sendMessageAt1851():
 
     if(len(chatIds)-1 == sendMessageIndex):
         sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТ КИНО КӨРГЕНШЕ, ҚУАНЫШ ШОНБАЙДАН ТЕГІН БІЛІМ АЛ😍\\n\\nСен бүгін Алматы уақыты бойынша 19.00-21.00 аралығында не істейсің?Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸❤\\n\\nАл қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥 https://u.to/jqPgGQ?utm_source=wh&utm_medium=second&utm_campaign=invite\"\r\n}" % (
-            createdChatIds[sendMessageIndex])
+            chatIds[sendMessageIndex])
 
         sendMessageIndex = 20000
 
@@ -261,7 +261,7 @@ def sendMessageAt1851():
 
     elif(sendMessageIndex != 20000):
         sendMessageAt1850 = "{\r\n\t\"chatId\": \"%s\",\r\n\t\"message\": \"2 САҒАТ КИНО КӨРГЕНШЕ, ҚУАНЫШ ШОНБАЙДАН ТЕГІН БІЛІМ АЛ😍\\n\\nСен бүгін Алматы уақыты бойынша 19.00-21.00 аралығында не істейсің?Әрине, Қуаныш Шонбайдың “2021 жылы интернеттен айына 1000$ алып келетін 5 қабілет” атты ТЕГІН мастер-классын көресің 💸❤\\n\\nАл қазір не істейтініңді білесің бе? Мына сілтеме бойынша өтіп, ТЕГІН бонустарға ие боласың😍🔥 https://u.to/jqPgGQ?utm_source=wh&utm_medium=second&utm_campaign=invite\"\r\n}" % (
-            createdChatIds[sendMessageIndex])
+            chatIds[sendMessageIndex])
 
         sendMessageResponse = requests.request("POST", sendMessageUrl, headers=headers,
                                                data=sendMessageAt1850.encode('utf8'))
@@ -2300,7 +2300,7 @@ def changeGroupInviteLinks():
 # sched.add_job(changeGroupInviteLinks, trigger='date', next_run_time=ChangeGroupInviteLinksTime)
 
 # sched.add_job(createGruopSecond, trigger='date', next_run_time=JustOnes)
-sched.add_job(createGruopSecond, 'date', run_date='2020-12-25 12:45:00')
+sched.add_job(createGruopSecond, 'date', run_date='2020-12-25 13:35:00')
 
 # def sendMessageAtExample():
 #     global sendMessageIndex
